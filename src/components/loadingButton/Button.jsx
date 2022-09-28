@@ -4,7 +4,7 @@ import SendIcon from '@mui/icons-material/Send'
 export default function SubmitButton({ name, loading }) {
   return (
     <LoadingButton
-      submit
+      type="submit"
       endIcon={<SendIcon />}
       loading={loading}
       loadingPosition="end"

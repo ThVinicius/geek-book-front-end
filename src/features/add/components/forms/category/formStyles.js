@@ -12,6 +12,9 @@ const Container = styled.form`
 
 const Back = styled.div`
   padding: 10px;
+  font: normal 400 24px 'Roboto', sans-serif;
+  text-decoration: underline;
+  cursor: pointer;
 `
 
 const BoxButtons = styled.div`

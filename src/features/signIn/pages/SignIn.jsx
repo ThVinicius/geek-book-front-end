@@ -1,4 +1,4 @@
-import AppContainer from '../../../containers/app/App'
+import AppContainer from '../../../containers/auth/App'
 import Content from '../../../components/authContent/Content'
 import Form from '../components/form/Form'
 

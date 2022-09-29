@@ -6,6 +6,8 @@ import 'react-toastify/dist/ReactToastify.css'
 import { GlobalProvider } from './context/globalContext'
 import SignUp from './features/signUp/pages/SignUp'
 import SignIn from './features/signIn/pages/SignIn'
+import Home from './features/home/pages/Home'
+import Add from './features/add/pages/Add'
 
 export default function App() {
   return (
@@ -15,8 +17,10 @@ export default function App() {
       <ToastContainer />
       <GlobalProvider>
         <Routes>
-          <Route path="signup" element={<SignUp />} />
-          <Route path="signin" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/add" element={<Add />} />
         </Routes>
       </GlobalProvider>
     </BrowserRouter>

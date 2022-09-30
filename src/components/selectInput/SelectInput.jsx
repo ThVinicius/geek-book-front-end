@@ -18,11 +18,11 @@ export default function SelectInput({ label, value, onChange }) {
         <MenuItem value="">
           <em>None</em>
         </MenuItem>
-        <MenuItem value="mangá">Mangá</MenuItem>
+        <MenuItem value="manga">Mangá</MenuItem>
         <MenuItem value="anime">Anime</MenuItem>
         <MenuItem value="manhua">Manhua</MenuItem>
         <MenuItem value="donghua">Donghua</MenuItem>
-        <MenuItem value="série">Série</MenuItem>
+        <MenuItem value="serie">Série</MenuItem>
       </Select>
     </FormControl>
   )

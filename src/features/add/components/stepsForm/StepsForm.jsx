@@ -1,4 +1,8 @@
 import { useState } from 'react'
+import useApi from '../../../../hooks/useApi'
+import request from '../../api/request'
+import useToast from '../../../../hooks/useToast'
+import useClean from '../../../../hooks/useClean'
 import CategoryForm from '../forms/category/Form'
 import DescriptionForm from '../forms/description/Form'
 import LastChapterForm from '../forms/lastChapter/LastChapter'
@@ -6,16 +10,31 @@ import LastChapterForm from '../forms/lastChapter/LastChapter'
 export default function StepsForm({ step, setStep }) {
   const [category, setCategory] = useState('')
   const [name, setName] = useState('')
-  const [sinopse, setSinopse] = useState('')
+  const [synopsis, setSynopsis] = useState('')
   const [poster, setPoster] = useState('')
-  const [last, setLast] = useState('')
+  const [lastSeen, setLastSeen] = useState('')
+  const [response, fetch] = useApi()
+
+  useToast(response)
+
+  useClean(
+    [setCategory, setName, setSynopsis, setPoster, setLastSeen],
+    setStep,
+    response
+  )
 
   const submit = e => {
     e.preventDefault()
 
-    const data = { category, name, sinopse, poster, last }
+    const data = { category, name, synopsis, poster, lastSeen }
 
-    console.log(data)
+    data.lastSeen = Number(lastSeen)
+
+    if (data.synopsis.trim() === '') data.synopsis = null
+
+    if (data.poster.trim() === '') data.poster = null
+
+    fetch(...request(data))
   }
 
   switch (step) {
@@ -34,8 +53,8 @@ export default function StepsForm({ step, setStep }) {
       return (
         <DescriptionForm
           setStep={setStep}
-          sinopse={sinopse}
-          setSinopse={setSinopse}
+          sinopse={synopsis}
+          setSinopse={setSynopsis}
           poster={poster}
           setPoster={setPoster}
         />
@@ -45,8 +64,8 @@ export default function StepsForm({ step, setStep }) {
       return (
         <LastChapterForm
           setStep={setStep}
-          last={last}
-          setLast={setLast}
+          last={lastSeen}
+          setLast={setLastSeen}
           submit={submit}
         />
       )

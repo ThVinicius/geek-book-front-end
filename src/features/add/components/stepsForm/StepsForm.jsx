@@ -8,7 +8,7 @@ import DescriptionForm from '../forms/description/Form'
 import LastChapterForm from '../forms/lastChapter/LastChapter'
 
 export default function StepsForm({ step, setStep }) {
-  const [category, setCategory] = useState('')
+  const [categoryId, setCategoryId] = useState('')
   const [name, setName] = useState('')
   const [synopsis, setSynopsis] = useState('')
   const [poster, setPoster] = useState('')
@@ -18,7 +18,7 @@ export default function StepsForm({ step, setStep }) {
   useToast(response)
 
   useClean(
-    [setCategory, setName, setSynopsis, setPoster, setLastSeen],
+    [setCategoryId, setName, setSynopsis, setPoster, setLastSeen],
     setStep,
     response
   )
@@ -26,7 +26,9 @@ export default function StepsForm({ step, setStep }) {
   const submit = e => {
     e.preventDefault()
 
-    const data = { category, name, synopsis, poster, lastSeen }
+    const data = { categoryId, name, synopsis, poster, lastSeen }
+
+    data.categoryId = Number(categoryId)
 
     data.lastSeen = Number(lastSeen)
 
@@ -42,8 +44,8 @@ export default function StepsForm({ step, setStep }) {
       return (
         <CategoryForm
           setStep={setStep}
-          category={category}
-          setCategory={setCategory}
+          category={categoryId}
+          setCategory={setCategoryId}
           name={name}
           setName={setName}
         />
@@ -67,6 +69,7 @@ export default function StepsForm({ step, setStep }) {
           last={lastSeen}
           setLast={setLastSeen}
           submit={submit}
+          response={response}
         />
       )
 

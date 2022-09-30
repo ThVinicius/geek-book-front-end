@@ -1,9 +1,22 @@
+import { useEffect, useState } from 'react'
+import useApi from '../../../../../hooks/useApi'
+import request from '../../../api/getCategories'
+import useHanleRequest from '../../../../../hooks/useHanleRequest'
 import SelectInput from '../../../../../components/selectInput/SelectInput'
 import AutoComplete from '../../../../../components/autoComplete/AutoComplete'
 import SubmitButton from '../../../../../components/loadingButton/Button'
 import { Container } from './formStyles'
 
 function CategoryForm({ setStep, category, setCategory, name, setName }) {
+  const [categories, setCategories] = useState(null)
+  const [response, fetch] = useApi()
+
+  useEffect(() => {
+    fetch(...request())
+  }, [])
+
+  useHanleRequest(response, setCategories)
+
   const next = event => {
     event.preventDefault()
 
@@ -14,6 +27,7 @@ function CategoryForm({ setStep, category, setCategory, name, setName }) {
     <Container onSubmit={next}>
       <SelectInput
         label="Categoria"
+        options={categories}
         value={category}
         onChange={e => setCategory(e.target.value)}
       />

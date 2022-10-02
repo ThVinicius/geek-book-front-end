@@ -8,7 +8,7 @@ import SearchNotFound from '../searchNotFound/SearchNotFound'
 import { Glass } from '../../../../components/spinner/Spinners'
 
 export default function Rows({ collections, search }) {
-  if (collections.length === 0 && search.length > 0) return <SearchNotFound />
+  if (collections?.length === 0 && search.length > 0) return <SearchNotFound />
   else if (collections === null) return <Glass />
   else if (collections.length === 0) return <Empty />
 

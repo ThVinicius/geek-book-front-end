@@ -3,6 +3,7 @@ import useApi from '../../../../hooks/useApi'
 import getUserCollections from '../../api/getUserCollections'
 import useToast from '../../../../hooks/useToast'
 import useHandleRequest from '../../../../hooks/useHandleRequest'
+import useSearch from '../../../../hooks/useSearch'
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
 import TableContainer from '@mui/material/TableContainer'
@@ -12,21 +13,10 @@ import Paper from '@mui/material/Paper'
 import { StyledTableCell } from '../../assets/tableStyles'
 import Rows from '../rows/Rows'
 
-function createData(name, category, lastSeen) {
-  return { name, category, lastSeen }
-}
-
-const rows = [
-  createData('One piece', 'manga', 1061),
-  createData('Black clover', 'manga', 370),
-  createData('Doulou dalu', 'donghua', 221),
-  createData('Kill the Dragon', 'manhua', 28),
-  createData('Advanced Evolution', 'manhua', 60)
-]
-
-export default function CustomizedTables() {
+export default function CustomizedTables({ search }) {
   const [collections, setCollections] = useState(null)
   const [response, fetch] = useApi()
+  const { result } = useSearch(search, collections)
 
   useHandleRequest(response, setCollections)
 
@@ -49,7 +39,7 @@ export default function CustomizedTables() {
           </TableRow>
         </TableHead>
         <TableBody>
-          <Rows collections={collections} />
+          <Rows collections={result} search={search} />
         </TableBody>
       </Table>
     </TableContainer>

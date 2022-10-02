@@ -8,13 +8,7 @@ export default function updateLastSeen(data) {
   return [requests, submitToken, sucessCase, failCase]
 }
 
-function sucessCase(props) {
-  const { res } = props
-
-  const [response] = res
-
-  console.log(response)
-}
+function sucessCase() {}
 
 function failCase(props) {
   const { res, setResponse } = props

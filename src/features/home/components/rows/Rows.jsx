@@ -4,10 +4,12 @@ import Button from '@mui/material/Button'
 import TooltipContent from '../tooltipContent/TooltipContent'
 import LastSeen from '../lastSeen/LastSeen'
 import Empty from '../empty/Empty'
+import SearchNotFound from '../searchNotFound/SearchNotFound'
 import { Glass } from '../../../../components/spinner/Spinners'
 
-export default function Rows({ collections }) {
-  if (collections === null) return <Glass />
+export default function Rows({ collections, search }) {
+  if (collections.length === 0 && search.length > 0) return <SearchNotFound />
+  else if (collections === null) return <Glass />
   else if (collections.length === 0) return <Empty />
 
   return collections.map(row => (

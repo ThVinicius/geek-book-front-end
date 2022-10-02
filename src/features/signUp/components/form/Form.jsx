@@ -57,7 +57,7 @@ export default function Form() {
         onChange={e => setConfirmPassword(e.target.value)}
       />
       <SubmitButton name="Cadastrar" />
-      <Anchor to="/signin">Já possuo cadastro</Anchor>
+      <Anchor to="/">Já possuo cadastro</Anchor>
     </Container>
   )
 }

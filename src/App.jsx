@@ -18,8 +18,8 @@ export default function App() {
       <GlobalProvider>
         <Routes>
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<SignIn />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/add" element={<Add />} />
         </Routes>
       </GlobalProvider>

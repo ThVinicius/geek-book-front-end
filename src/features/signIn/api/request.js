@@ -19,7 +19,7 @@ function sucessCase(props) {
 
   localStorage.setItem('token', data.data.token)
 
-  navigate('/')
+  navigate('/home')
 }
 
 function failCase(props) {

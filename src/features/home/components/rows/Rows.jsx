@@ -29,7 +29,7 @@ export default function Rows({ collections }) {
         {row.collection.category.name}
       </StyledTableCell>
       <StyledTableCell align="right">
-        <LastSeen lastSeen={row.lastSeen} />
+        <LastSeen lastSeen={row.lastSeen} collectionId={row.collection.id} />
       </StyledTableCell>
     </StyledTableRow>
   ))

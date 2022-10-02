@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import useApi from '../../../../../hooks/useApi'
 import request from '../../../api/getCategories'
-import useHanleRequest from '../../../../../hooks/useHanleRequest'
+import useHandleRequest from '../../../../../hooks/useHandleRequest'
 import SelectInput from '../../../../../components/selectInput/SelectInput'
 import AutoComplete from '../../../../../components/autoComplete/AutoComplete'
 import SubmitButton from '../../../../../components/loadingButton/Button'
@@ -15,7 +15,7 @@ function CategoryForm({ setStep, category, setCategory, name, setName }) {
     fetch(...request())
   }, [])
 
-  useHanleRequest(response, setCategories)
+  useHandleRequest(response, setCategories)
 
   const next = event => {
     event.preventDefault()

@@ -4,14 +4,14 @@ import axios from 'axios'
 import { useGlobal } from '../context/globalContext'
 import BASE_URL from '../config/api'
 
-function useApi() {
+function useApi(wait = true) {
   const { global, setGlobal } = useGlobal()
   const [response, setResponse] = useState(null)
   const loading = useRef(false)
   const navigate = useNavigate()
 
   function fetch(requests, submitToken, sucess, fail, props) {
-    if (loading.current === true) return
+    if (loading.current === true && wait === true) return
 
     setResponse('loading')
 
@@ -43,7 +43,7 @@ function useApi() {
           : setResponse(res.response.data)
       )
       .finally(() => {
-        loading.current = false
+        if (wait === true) loading.current = false
       })
   }
 

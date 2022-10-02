@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import useApi from '../../../../hooks/useApi'
 import getUserCollections from '../../api/getUserCollections'
 import useToast from '../../../../hooks/useToast'
-import useHanleRequest from '../../hooks/useHanleRequest'
+import useHandleRequest from '../../../../hooks/useHandleRequest'
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
 import TableContainer from '@mui/material/TableContainer'
@@ -28,7 +28,7 @@ export default function CustomizedTables() {
   const [collections, setCollections] = useState(null)
   const [response, fetch] = useApi()
 
-  useHanleRequest(response, setCollections)
+  useHandleRequest(response, setCollections)
 
   useToast(response)
 

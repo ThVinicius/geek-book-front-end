@@ -14,6 +14,7 @@ export default function StepsForm({ step, setStep }) {
   const [poster, setPoster] = useState('')
   const [lastSeen, setLastSeen] = useState('')
   const [response, fetch] = useApi()
+  const [options, setOptions] = useState([])
 
   useToast(response)
 
@@ -48,6 +49,8 @@ export default function StepsForm({ step, setStep }) {
           setCategory={setCategoryId}
           name={name}
           setName={setName}
+          options={options}
+          setOptions={setOptions}
         />
       )
 
@@ -59,6 +62,8 @@ export default function StepsForm({ step, setStep }) {
           setSinopse={setSynopsis}
           poster={poster}
           setPoster={setPoster}
+          options={options}
+          name={name}
         />
       )
 

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import useApi from '../../../../../hooks/useApi'
 import request from '../../../api/getCategories'
 import useHandleRequest from '../../../../../hooks/useHandleRequest'
@@ -7,7 +7,16 @@ import AutoComplete from '../../../../../components/autoComplete/AutoComplete'
 import SubmitButton from '../../../../../components/loadingButton/Button'
 import { Container } from './formStyles'
 
-function CategoryForm({ setStep, category, setCategory, name, setName }) {
+export default function CategoryForm({
+  setStep,
+  category,
+  setCategory,
+  name,
+  setName,
+  options,
+  setOptions
+}) {
+  const fetchNames = useRef(false)
   const [categories, setCategories] = useState(null)
   const [response, fetch] = useApi()
 
@@ -23,16 +32,26 @@ function CategoryForm({ setStep, category, setCategory, name, setName }) {
     setStep(prev => prev + 1)
   }
 
+  const handleCategory = value => {
+    fetchNames.current = true
+
+    setCategory(value)
+  }
+
   return (
     <Container onSubmit={next}>
       <SelectInput
         label="Categoria"
         options={categories}
         value={category}
-        onChange={e => setCategory(e.target.value)}
+        onChange={e => handleCategory(e.target.value)}
       />
       <AutoComplete
         label="Nome"
+        category={category}
+        options={options}
+        setOptions={setOptions}
+        loading={fetchNames.current}
         value={name}
         onChange={(e, newValue) => setName(newValue)}
       />
@@ -41,5 +60,3 @@ function CategoryForm({ setStep, category, setCategory, name, setName }) {
     </Container>
   )
 }
-
-export default CategoryForm

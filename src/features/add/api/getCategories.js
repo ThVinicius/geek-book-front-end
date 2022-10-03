@@ -1,5 +1,5 @@
 export default function request() {
-  const submitToken = true
+  const submitToken = false
 
   const request = { url: '/categories', method: 'get' }
 

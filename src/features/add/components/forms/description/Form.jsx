@@ -1,8 +1,31 @@
+import { useEffect, useState } from 'react'
 import Input from '../../../../../components/input/Input'
 import SubmitButton from '../../../../../components/loadingButton/Button'
 import { Container, BoxButtons, Back } from '../category/formStyles'
 
-function DescriptionForm({ setStep, sinopse, setSinopse, poster, setPoster }) {
+export default function DescriptionForm({
+  setStep,
+  sinopse,
+  setSinopse,
+  poster,
+  setPoster,
+  options,
+  name
+}) {
+  const [find, setFind] = useState(false)
+
+  useEffect(() => {
+    const find = options.find(collection => collection.name === name)
+
+    if (find && find.synopsis !== null && find.poster !== null) {
+      setSinopse(find.synopsis)
+
+      setPoster(find.poster)
+
+      setFind(true)
+    }
+  }, [])
+
   const next = e => {
     e.preventDefault()
 
@@ -16,6 +39,7 @@ function DescriptionForm({ setStep, sinopse, setSinopse, poster, setPoster }) {
       <Input
         label="Sinopse"
         required={false}
+        disabled={find}
         multiline={true}
         value={sinopse}
         onChange={e => setSinopse(e.target.value)}
@@ -24,6 +48,7 @@ function DescriptionForm({ setStep, sinopse, setSinopse, poster, setPoster }) {
         label="Poster"
         type="url"
         required={false}
+        disabled={find}
         value={poster}
         onChange={e => setPoster(e.target.value)}
       />
@@ -35,5 +60,3 @@ function DescriptionForm({ setStep, sinopse, setSinopse, poster, setPoster }) {
     </Container>
   )
 }
-
-export default DescriptionForm

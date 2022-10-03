@@ -4,10 +4,13 @@ import Logo from '../logo/Logo'
 export default function Content({ children }) {
   return (
     <>
-      <Container>
+      <Container className="logo-desktop">
         <Logo />
       </Container>
-      <Container>{children}</Container>
+      <Container>
+        <Logo className="logo-mobile" />
+        {children}
+      </Container>
     </>
   )
 }

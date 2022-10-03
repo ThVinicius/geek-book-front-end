@@ -18,5 +18,16 @@ const Container = styled.div`
   span {
     color: #3f61d7;
   }
+
+  &.logo-mobile {
+    display: none;
+
+    @media (max-width: 420px) {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+  }
 `
 export { Container }

@@ -10,7 +10,7 @@ export default function useLogout() {
     global.userCollections = null
     global.user = null
 
-    localStorage.removeItem('token')
+    localStorage.removeItem('user')
 
     navigate('/')
   }

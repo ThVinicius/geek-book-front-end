@@ -8,6 +8,7 @@ import SignUp from './features/signUp/pages/SignUp'
 import SignIn from './features/signIn/pages/SignIn'
 import Home from './features/home/pages/Home'
 import Add from './features/add/pages/Add'
+import MyCollection from './features/complete/pages/MyCollection'
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
           <Route path="/" element={<SignIn />} />
           <Route path="/home" element={<Home />} />
           <Route path="/add" element={<Add />} />
+          <Route path="/complete" element={<MyCollection />} />
         </Routes>
       </GlobalProvider>
     </BrowserRouter>

@@ -2,10 +2,9 @@ import styled from 'styled-components'
 
 const Container = styled.div`
   width: 100%;
-  height: 100%;
-  overflow-y: auto;
-  background-color: #f2f3f4;
-  padding: 20px;
+  padding-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
 `
 
 export { Container }

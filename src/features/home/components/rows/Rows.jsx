@@ -1,5 +1,6 @@
 import { StyledTableCell, StyledTableRow } from '../../assets/tableStyles'
 import Tooltip from '@mui/material/Tooltip'
+import Zoom from '@mui/material/Zoom'
 import Button from '@mui/material/Button'
 import TooltipContent from '../tooltipContent/TooltipContent'
 import LastSeen from '../lastSeen/LastSeen'
@@ -16,6 +17,7 @@ export default function Rows({ collections, search }) {
     <StyledTableRow key={row.collection.name}>
       <StyledTableCell component="th" scope="row">
         <Tooltip
+          TransitionComponent={Zoom}
           title={
             <TooltipContent
               poster={row.collection.poster}

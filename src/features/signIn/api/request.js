@@ -13,15 +13,17 @@ export default function request(data) {
 function sucessCase(props) {
   const { res, global, navigate } = props
 
-  const [data] = res
+  const [response] = res
 
-  global.token = data.data.token
+  const userStringfy = JSON.stringify(response.data)
 
-  delete data.data.token
+  localStorage.setItem('user', userStringfy)
 
-  global.user = data.data
+  const { token, ...user } = response.data
 
-  localStorage.setItem('token', data.data.token)
+  global.token = token
+
+  global.user = user
 
   navigate('/home')
 }

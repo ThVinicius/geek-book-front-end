@@ -1,18 +1,19 @@
-import { useState } from 'react'
-import useApi from '../../../../hooks/useApi'
-import request from '../../api/request'
-import useToast from '../../../../hooks/useToast'
-import useClean from '../../../../hooks/useClean'
-import CategoryForm from '../forms/category/Form'
-import DescriptionForm from '../forms/description/Form'
-import LastChapterForm from '../forms/lastChapter/LastChapter'
+import { useState } from "react"
+import useApi from "../../../../hooks/useApi"
+import request from "../../api/request"
+import useToast from "../../../../hooks/useToast"
+import useClean from "../../../../hooks/useClean"
+import CategoryForm from "../forms/category/Form"
+import DescriptionForm from "../forms/description/Form"
+import LastChapterForm from "../forms/lastChapter/LastChapter"
 
 export default function StepsForm({ step, setStep }) {
-  const [categoryId, setCategoryId] = useState('')
-  const [name, setName] = useState('')
-  const [synopsis, setSynopsis] = useState('')
-  const [poster, setPoster] = useState('')
-  const [lastSeen, setLastSeen] = useState('')
+  const [categoryId, setCategoryId] = useState("")
+  const [name, setName] = useState("")
+  const [synopsis, setSynopsis] = useState("")
+  const [poster, setPoster] = useState("")
+  const [lastSeen, setLastSeen] = useState("")
+  const [statusId, setStatusId] = useState(1)
   const [response, fetch] = useApi()
   const [options, setOptions] = useState([])
 
@@ -27,15 +28,15 @@ export default function StepsForm({ step, setStep }) {
   const submit = e => {
     e.preventDefault()
 
-    const data = { categoryId, name, synopsis, poster, lastSeen }
+    const data = { categoryId, name, synopsis, poster, lastSeen, statusId }
 
     data.categoryId = Number(categoryId)
 
     data.lastSeen = Number(lastSeen)
 
-    if (data.synopsis.trim() === '') data.synopsis = null
+    if (data.synopsis.trim() === "") data.synopsis = null
 
-    if (data.poster.trim() === '') data.poster = null
+    if (data.poster.trim() === "") data.poster = null
 
     fetch(...request(data))
   }
@@ -73,6 +74,8 @@ export default function StepsForm({ step, setStep }) {
           setStep={setStep}
           last={lastSeen}
           setLast={setLastSeen}
+          status={statusId}
+          setStatus={setStatusId}
           submit={submit}
           response={response}
         />

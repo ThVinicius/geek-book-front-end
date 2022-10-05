@@ -8,6 +8,7 @@ import DeleteIcon from "@mui/icons-material/Delete"
 import IconButton from "@mui/material/IconButton"
 import LastSeen from "../lastSeen/LastSeen"
 import DeleteModal from "../../../../components/deleteModal/DeleteModal"
+import Status from "./Status"
 
 export default function Row({ row, setCollections }) {
   const [open, setOpen] = useState(false)
@@ -31,6 +32,9 @@ export default function Row({ row, setCollections }) {
         </StyledTableCell>
         <StyledTableCell align="right">
           {row.collection.category.name}
+        </StyledTableCell>
+        <StyledTableCell align="right">
+          <Status row={row} />
         </StyledTableCell>
         <StyledTableCell align="right">
           <LastSeen lastSeen={row.lastSeen} collectionId={row.collection.id} />

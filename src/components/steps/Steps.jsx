@@ -1,9 +1,9 @@
-import Stepper from '@mui/material/Stepper'
-import Step from '@mui/material/Step'
-import StepLabel from '@mui/material/StepLabel'
-import { Label } from './stepsStyles'
+import Stepper from "@mui/material/Stepper"
+import Step from "@mui/material/Step"
+import StepLabel from "@mui/material/StepLabel"
+import { Label } from "./stepsStyles"
 
-const steps = ['categoria', 'descrição', 'último capítulo']
+const steps = ["categoria", "descrição", "informações adicionais"]
 
 export default function Steps({ step }) {
   return (

@@ -1,9 +1,9 @@
-import { Container } from './inputStyles'
+import { Container } from "./inputStyles"
 
 export default function Input(props) {
-  const { label, type = 'text', value, onChange, required = true } = props
+  const { label, type = "text", value, onChange, required = true } = props
 
-  const { multiline = false, disabled = false } = props
+  const { multiline = false, disabled = false, width = "75%" } = props
 
   return (
     <Container
@@ -14,6 +14,7 @@ export default function Input(props) {
       value={value}
       onChange={onChange}
       multiline={multiline}
+      width={width}
     />
   )
 }

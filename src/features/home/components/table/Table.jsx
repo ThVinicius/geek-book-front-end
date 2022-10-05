@@ -33,6 +33,7 @@ export default function CustomizedTables({ search }) {
           <TableRow>
             <StyledTableCell>Nome</StyledTableCell>
             <StyledTableCell align="right">Categoria</StyledTableCell>
+            <StyledTableCell align="right">Status</StyledTableCell>
             <StyledTableCell align="right">Capítulo/episódio</StyledTableCell>
             <StyledTableCell align="right">Deletar</StyledTableCell>
           </TableRow>

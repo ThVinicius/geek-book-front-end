@@ -1,20 +1,14 @@
-export default function request() {
-  const submitToken = false
+export default function updateStatus(data) {
+  const submitToken = true
 
-  const request = { url: "/categories", method: "get" }
+  const request = { url: "/user-collections/status", method: "patch", data }
 
   const requests = [request]
 
   return [requests, submitToken, sucessCase, failCase]
 }
 
-function sucessCase(props) {
-  const { res, setResponse } = props
-
-  const [response] = res
-
-  setResponse(response.data)
-}
+function sucessCase() {}
 
 function failCase(props) {
   const { res, setResponse } = props

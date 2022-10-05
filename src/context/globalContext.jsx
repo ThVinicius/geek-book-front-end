@@ -1,4 +1,4 @@
-import { useState, useContext, createContext } from 'react'
+import { useState, useContext, createContext } from "react"
 
 const GlobalContext = createContext()
 
@@ -6,7 +6,8 @@ export function GlobalProvider({ children }) {
   const [global, setGlobal] = useState({
     token: null,
     userCollections: null,
-    user: null
+    user: null,
+    status: null
   })
 
   return (

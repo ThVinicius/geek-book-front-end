@@ -1,6 +1,8 @@
+import { useState } from 'react'
 import DeleteIcon from '@mui/icons-material/Delete'
 import IconButton from '@mui/material/IconButton'
 import Tooltip from '@mui/material/Tooltip'
+import DeleteModal from '../../../components/deleteModal/DeleteModal'
 
 import { Container, Box, Content, Info, DeleteBox } from './template'
 
@@ -15,6 +17,8 @@ const collection = {
 }
 
 export default function ItemTemplate() {
+  const [open, setOpen] = useState(false)
+
   return (
     <Container>
       <h1>{collection.name}</h1>
@@ -35,13 +39,14 @@ export default function ItemTemplate() {
           </Info>
           <DeleteBox>
             <Tooltip title={<p style={{ fontSize: '16px' }}>Deletar</p>}>
-              <IconButton>
+              <IconButton onClick={() => setOpen(true)}>
                 <DeleteIcon />
               </IconButton>
             </Tooltip>
           </DeleteBox>
         </Box>
       </Content>
+      <DeleteModal open={open} setOpen={setOpen} />
     </Container>
   )
 }

@@ -6,9 +6,9 @@ import Button from "@mui/material/Button"
 import TooltipContent from "../tooltipContent/TooltipContent"
 import DeleteIcon from "@mui/icons-material/Delete"
 import IconButton from "@mui/material/IconButton"
-import LastSeen from "../lastSeen/LastSeen"
+import LastSeen from "../../../../components/lastSeen/LastSeen"
 import DeleteModal from "../../../../components/deleteModal/DeleteModal"
-import Status from "./Status"
+import Status from "../../../../components/status/Status"
 
 export default function Row({ row, setCollections }) {
   const [open, setOpen] = useState(false)

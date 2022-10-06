@@ -1,12 +1,12 @@
 import { useRef, useState } from "react"
-import useApi from "../../../../hooks/useApi"
-import useToast from "../../../../hooks/useToast"
-import updateLastSeen from "../../api/updateLastSeen"
+import useApi from "../../hooks/useApi"
+import useToast from "../../hooks/useToast"
+import updateLastSeen from "./api/updateLastSeen"
 import { Container } from "./lastSeenStyles"
-import InputIcon from "../../../../components/inputIcon/Input"
+import InputIcon from "../inputIcon/Input"
 import CloseIcon from "@mui/icons-material/Close"
 
-export default function LastSeen({ lastSeen, collectionId }) {
+function LastSeen({ lastSeen, collectionId, control = true, justify = "end" }) {
   const lastSeenValue = useRef(lastSeen)
   const [input, setInput] = useState(false)
   const [last, setLast] = useState(lastSeen)
@@ -57,7 +57,7 @@ export default function LastSeen({ lastSeen, collectionId }) {
   }
 
   return (
-    <Container>
+    <Container justify={justify}>
       {input ? (
         <InputIcon
           label="Novo valor"
@@ -69,11 +69,13 @@ export default function LastSeen({ lastSeen, collectionId }) {
         />
       ) : (
         <>
-          <p onClick={() => updateLast(-1)}>-</p>
+          {control && <p onClick={() => updateLast(-1)}>-</p>}
           <h6 onClick={() => setInput(true)}>{lastSeenValue.current}</h6>
-          <p onClick={() => updateLast(1)}>+</p>
+          {control && <p onClick={() => updateLast(1)}>+</p>}
         </>
       )}
     </Container>
   )
 }
+
+export default LastSeen

@@ -12,6 +12,7 @@ import TableRow from "@mui/material/TableRow"
 import Paper from "@mui/material/Paper"
 import { StyledTableCell } from "../../assets/tableStyles"
 import Rows from "../rows/Rows"
+import HandleResponse from "../../../../components/handleResponse/HandleResponse"
 
 export default function CustomizedTables({ search }) {
   const [collections, setCollections] = useState(null)
@@ -26,7 +27,9 @@ export default function CustomizedTables({ search }) {
     fetch(...getActiveUserCollections())
   }, [])
 
-  return (
+  return result === null || result === undefined || result.length === 0 ? (
+    <HandleResponse collections={result} search={search} status="ativa" />
+  ) : (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 100 }} aria-label="customized table">
         <TableHead>

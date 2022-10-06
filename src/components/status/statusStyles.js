@@ -1,8 +1,8 @@
 import styled from "styled-components"
 
-const P = styled.p`
+const H6 = styled.h6`
   font-size: 16px;
   cursor: pointer;
 `
 
-export { P }
+export { H6 }

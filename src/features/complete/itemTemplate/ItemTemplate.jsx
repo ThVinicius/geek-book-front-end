@@ -3,10 +3,12 @@ import DeleteIcon from "@mui/icons-material/Delete"
 import IconButton from "@mui/material/IconButton"
 import Tooltip from "@mui/material/Tooltip"
 import DeleteModal from "../../../components/deleteModal/DeleteModal"
+import Status from "../../../components/status/Status"
+import LastSeen from "../../../components/lastSeen/LastSeen"
 
 import { Container, Box, Content, Info, DeleteBox } from "./template"
 
-export default function ItemTemplate({ row }) {
+export default function ItemTemplate({ row, setCollections }) {
   const [open, setOpen] = useState(false)
 
   return (
@@ -21,11 +23,16 @@ export default function ItemTemplate({ row }) {
           </Info>
           <Info>
             <p>Status</p>
-            <h6>{row.status.name}</h6>
+            <Status row={row} />
           </Info>
           <Info>
             <p>Capítulo/episódio</p>
-            <h6>{row.lastSeen}</h6>
+            <LastSeen
+              control={false}
+              lastSeen={row.lastSeen}
+              collectionId={row.collection.id}
+              justify="start"
+            />
           </Info>
           <DeleteBox>
             <Tooltip title={<p style={{ fontSize: "16px" }}>Deletar</p>}>
@@ -36,7 +43,13 @@ export default function ItemTemplate({ row }) {
           </DeleteBox>
         </Box>
       </Content>
-      <DeleteModal open={open} setOpen={setOpen} />
+      <DeleteModal
+        open={open}
+        setOpen={setOpen}
+        name={row.collection.name}
+        setCollections={setCollections}
+        id={row.id}
+      />
     </Container>
   )
 }

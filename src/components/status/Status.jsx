@@ -1,10 +1,10 @@
 import { useRef, useState } from "react"
-import useApi from "../../../../hooks/useApi"
-import updateStatus from "../../api/updateStatus"
-import useToast from "../../../../hooks/useToast"
-import { useGlobal } from "../../../../context/globalContext"
-import SelectInput from "../../../../components/selectInput/SelectInput"
-import { P } from "./rowStyles"
+import useApi from "../../hooks/useApi"
+import updateStatus from "./api/updateStatus"
+import useToast from "../../hooks/useToast"
+import { useGlobal } from "../../context/globalContext"
+import SelectInput from "../selectInput/SelectInput"
+import { H6 } from "./statusStyles"
 
 const wait = false
 
@@ -62,6 +62,6 @@ export default function Status({ row }) {
       onChange={e => handleStatus(e.target.value)}
     />
   ) : (
-    <P onClick={() => setInput(true)}>{statusValue.current.name}</P>
+    <H6 onClick={() => setInput(true)}>{statusValue.current.name}</H6>
   )
 }

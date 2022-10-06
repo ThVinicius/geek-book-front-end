@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from "react"
 
 export default function useSearch(search, array) {
   const [result, setResult] = useState(array)
@@ -8,7 +8,7 @@ export default function useSearch(search, array) {
       const target = search.toUpperCase()
 
       setResult(
-        array.filter(({ collection }) =>
+        array?.filter(({ collection }) =>
           collection.name.toUpperCase().includes(target)
         )
       )

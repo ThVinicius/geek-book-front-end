@@ -1,12 +1,12 @@
-import { MagnifyingGlass } from 'react-loader-spinner'
-import { Container } from './spinnerStyles'
+import { MagnifyingGlass } from "react-loader-spinner"
+import { Container } from "./spinnerStyles"
 
-export function Glass() {
+export function Glass({ height = "120", width = "120" }) {
   return (
     <Container>
       <MagnifyingGlass
-        height="120"
-        width="120"
+        height={height}
+        width={width}
         glassColor="#c0efff"
         color="#e15b64"
       />

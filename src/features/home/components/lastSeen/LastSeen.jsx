@@ -14,6 +14,12 @@ export default function LastSeen({ lastSeen, collectionId }) {
 
   useToast(response)
 
+  const handleCancel = () => {
+    setLast(lastSeenValue.current)
+
+    setInput(false)
+  }
+
   const key = event => {
     switch (event.key) {
       case "Enter":
@@ -30,9 +36,7 @@ export default function LastSeen({ lastSeen, collectionId }) {
         return
 
       case "Escape":
-        setLast(lastSeenValue.current)
-
-        setInput(false)
+        handleCancel()
         return
 
       default:
@@ -60,7 +64,8 @@ export default function LastSeen({ lastSeen, collectionId }) {
           value={last}
           onChange={e => setLast(e.target.value)}
           onKeyUp={key}
-          icon={<CloseIcon onClick={() => setInput(false)} />}
+          autoFocus={true}
+          icon={<CloseIcon onClick={handleCancel} />}
         />
       ) : (
         <>

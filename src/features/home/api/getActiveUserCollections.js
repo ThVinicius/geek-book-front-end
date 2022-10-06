@@ -1,7 +1,7 @@
-export default function getUserCollections() {
+export default function getActiveUserCollections() {
   const submitToken = true
 
-  const userCollections = { url: "/user-collections", method: "get" }
+  const userCollections = { url: "/user-collections/1", method: "get" }
 
   const getAllStatus = { url: "/status", method: "get" }
 
@@ -16,8 +16,6 @@ function sucessCase(props) {
   const [userCollections, getAllStatus] = res
 
   global.status = getAllStatus.data
-
-  console.log(global)
 
   setResponse(userCollections.data)
 }

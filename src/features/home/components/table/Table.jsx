@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import useApi from "../../../../hooks/useApi"
-import getUserCollections from "../../api/getUserCollections"
+import getActiveUserCollections from "../../api/getActiveUserCollections"
 import useToast from "../../../../hooks/useToast"
 import useHandleRequest from "../../../../hooks/useHandleRequest"
 import useSearch from "../../../../hooks/useSearch"
@@ -23,7 +23,7 @@ export default function CustomizedTables({ search }) {
   useToast(response)
 
   useEffect(() => {
-    fetch(...getUserCollections())
+    fetch(...getActiveUserCollections())
   }, [])
 
   return (

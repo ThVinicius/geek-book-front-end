@@ -4,6 +4,7 @@ import updateStatus from "../../api/updateStatus"
 import useToast from "../../../../hooks/useToast"
 import { useGlobal } from "../../../../context/globalContext"
 import SelectInput from "../../../../components/selectInput/SelectInput"
+import { P } from "./rowStyles"
 
 const wait = false
 
@@ -52,6 +53,8 @@ export default function Status({ row }) {
     <SelectInput
       onKeyUp={key}
       size="small"
+      autoWidth={true}
+      focused={true}
       none={false}
       label="Status"
       options={global.status}
@@ -59,6 +62,6 @@ export default function Status({ row }) {
       onChange={e => handleStatus(e.target.value)}
     />
   ) : (
-    <p onClick={() => setInput(true)}>{statusValue.current.name}</p>
+    <P onClick={() => setInput(true)}>{statusValue.current.name}</P>
   )
 }

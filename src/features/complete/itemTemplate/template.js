@@ -1,18 +1,16 @@
-import styled from 'styled-components'
+import styled from "styled-components"
 
 const Container = styled.div`
-  width: 300px;
   padding: 20px;
   border-radius: 5px;
   background-color: #ffffff;
-  box-shadow: rgba(40, 41, 61, 0.08) 0px 0px 1px,
-    rgba(96, 97, 112, 0.16) 0px 0.5px 2px;
+  box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.75);
   display: flex;
   flex-direction: column;
   align-items: center;
 
   h1 {
-    font: normal 700 23px 'Lexend', sans-serif;
+    font: normal 700 23px "Lexend", sans-serif;
     color: #000000;
   }
 
@@ -29,11 +27,11 @@ const Content = styled.div`
 
 const Info = styled.div`
   p {
-    font: normal 500 18px 'Lexend', sans-serif;
+    font: normal 500 18px "Lexend", sans-serif;
   }
 
   h6 {
-    font: normal 300 18px 'Lexend', sans-serif;
+    font: normal 300 18px "Lexend", sans-serif;
   }
 `
 

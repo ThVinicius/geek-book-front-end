@@ -9,10 +9,10 @@ function SelectInput({
   value,
   onChange,
   none = true,
-  minWidth = 120,
   size = null,
-  onKeyUp = null,
-  useRef = null
+  onKeyUp,
+  focused,
+  autoWidth
 }) {
   const itens = () => {
     if (options !== null && options !== "loading") {
@@ -25,9 +25,21 @@ function SelectInput({
   }
 
   return (
-    <FormControl sx={{ m: 1, minWidth }} size={size} onKeyUp={onKeyUp}>
+    <FormControl
+      onKeyUp={onKeyUp}
+      sx={{ m: 1, minWidth: autoWidth ? 0 : 120 }}
+      focused={focused}
+      size={size}
+      autoWidth={autoWidth}
+    >
       <InputLabel>{label}</InputLabel>
-      <Select value={value} required onChange={onChange} label={label}>
+      <Select
+        value={value}
+        required
+        onChange={onChange}
+        label={label}
+        open={focused}
+      >
         {none && (
           <MenuItem value="">
             <em>None</em>

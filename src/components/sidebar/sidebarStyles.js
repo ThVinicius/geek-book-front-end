@@ -1,5 +1,11 @@
-import styled from 'styled-components'
-import { SidebarHeader, SidebarFooter } from 'react-pro-sidebar'
+import styled from "styled-components"
+import { SidebarHeader, SidebarFooter, ProSidebar } from "react-pro-sidebar"
+
+const Container = styled(ProSidebar)`
+  .pro-sidebar-inner {
+    border-radius: 5px;
+  }
+`
 
 const Header = styled(SidebarHeader)`
   padding: 30px;
@@ -10,7 +16,7 @@ const Header = styled(SidebarHeader)`
   cursor: pointer;
 
   h1 {
-    font: normal 700 28px 'Lexend', sans-serif;
+    font: normal 700 28px "Lexend", sans-serif;
     color: #ffffff;
   }
 
@@ -25,11 +31,12 @@ const Footer = styled(SidebarFooter)`
   align-items: center;
   justify-content: center;
   gap: 15px;
-`
-
-const Logout = styled.p`
-  font: normal 700 18px 'Lexend', sans-serif;
   cursor: pointer;
 `
 
-export { Header, Footer, Logout }
+const Logout = styled.p`
+  font: normal 700 18px "Lexend", sans-serif;
+  cursor: pointer;
+`
+
+export { Header, Footer, Logout, Container }

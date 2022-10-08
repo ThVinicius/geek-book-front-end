@@ -4,7 +4,9 @@ function useHandleRequest(response, set, loading) {
   useEffect(() => {
     if (loading !== undefined) loading.current = false
 
-    if (Array.isArray(response) || response?.nickname) set(response)
+    if (Array.isArray(response) || response?.nickname || response?.shortUrl) {
+      set(response)
+    }
   }, [response])
 }
 

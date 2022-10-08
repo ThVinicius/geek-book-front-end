@@ -5,6 +5,10 @@ const Container = styled(ProSidebar)`
   .pro-sidebar-inner {
     border-radius: 5px;
   }
+
+  .pro-item-content {
+    font-weight: 500;
+  }
 `
 
 const Header = styled(SidebarHeader)`

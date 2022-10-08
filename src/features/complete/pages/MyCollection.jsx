@@ -2,7 +2,7 @@ import { useState } from "react"
 import AppContainer from "../../../containers/app/App"
 import Content from "../../../containers/content/Content"
 import Sidebar from "../../../components/sidebar/Sidebar"
-import Header from "../../../containers/header/Header"
+import SearchContainer from "../../../containers/search/Search"
 import HomeHeader from "../../home/components/header/Header"
 import Itens from "../container/ItensContainer"
 
@@ -13,9 +13,9 @@ export default function MyCollection() {
     <AppContainer>
       <Sidebar />
       <Content>
-        <Header>
+        <SearchContainer>
           <HomeHeader search={search} setSearch={setSearch} />
-        </Header>
+        </SearchContainer>
         <Itens search={search} />
       </Content>
     </AppContainer>

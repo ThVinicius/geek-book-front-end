@@ -2,13 +2,12 @@ import { useState } from "react"
 import DeleteIcon from "@mui/icons-material/Delete"
 import IconButton from "@mui/material/IconButton"
 import Tooltip from "@mui/material/Tooltip"
-import DeleteModal from "../../../components/deleteModal/DeleteModal"
-import Status from "../../../components/status/Status"
-import LastSeen from "../../../components/lastSeen/LastSeen"
-
+import DeleteModal from "../deleteModal/DeleteModal"
+import Status from "../status/Status"
+import LastSeen from "../lastSeen/LastSeen"
 import { Container, Box, Content, Info, DeleteBox } from "./template"
 
-export default function ItemTemplate({ row, setCollections }) {
+export default function ItemTemplate({ row, setCollections, modify = true }) {
   const [open, setOpen] = useState(false)
 
   return (
@@ -23,7 +22,7 @@ export default function ItemTemplate({ row, setCollections }) {
           </Info>
           <Info>
             <p>Status</p>
-            <Status row={row} />
+            <Status row={row} modify={modify} />
           </Info>
           <Info>
             <p>Capítulo/episódio</p>
@@ -32,24 +31,29 @@ export default function ItemTemplate({ row, setCollections }) {
               lastSeen={row.lastSeen}
               collectionId={row.collection.id}
               justify="start"
+              modify={modify}
             />
           </Info>
-          <DeleteBox>
-            <Tooltip title={<p style={{ fontSize: "16px" }}>Deletar</p>}>
-              <IconButton onClick={() => setOpen(true)}>
-                <DeleteIcon />
-              </IconButton>
-            </Tooltip>
-          </DeleteBox>
+          {modify && (
+            <DeleteBox>
+              <Tooltip title={<p style={{ fontSize: "16px" }}>Deletar</p>}>
+                <IconButton onClick={() => setOpen(true)}>
+                  <DeleteIcon />
+                </IconButton>
+              </Tooltip>
+            </DeleteBox>
+          )}
         </Box>
       </Content>
-      <DeleteModal
-        open={open}
-        setOpen={setOpen}
-        name={row.collection.name}
-        setCollections={setCollections}
-        id={row.id}
-      />
+      {modify && (
+        <DeleteModal
+          open={open}
+          setOpen={setOpen}
+          name={row.collection.name}
+          setCollections={setCollections}
+          id={row.id}
+        />
+      )}
     </Container>
   )
 }

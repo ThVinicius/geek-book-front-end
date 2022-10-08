@@ -5,8 +5,10 @@ import useHandleRequest from "../../../hooks/useHandleRequest"
 import useToast from "../../../hooks/useToast"
 import useSearch from "../../../hooks/useSearch"
 import { Container } from "./container"
-import ItemTemplate from "../itemTemplate/ItemTemplate"
+import ItemTemplate from "../../../components/itemTemplate/ItemTemplate"
 import HandleResponse from "../../../components/handleResponse/HandleResponse"
+
+const emptyMessage = "Você não possui nenhuma obra completa 😞"
 
 export default function Itens({ search }) {
   const [collections, setCollections] = useState(null)
@@ -22,7 +24,11 @@ export default function Itens({ search }) {
   }, [])
 
   return result === null || result === undefined || result.length === 0 ? (
-    <HandleResponse search={search} collections={result} status="completa" />
+    <HandleResponse
+      search={search}
+      collections={result}
+      emptyMessage={emptyMessage}
+    />
   ) : (
     <Container>
       {result.map((row, index) => (

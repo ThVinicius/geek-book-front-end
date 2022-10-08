@@ -8,7 +8,7 @@ import { H6 } from "./statusStyles"
 
 const wait = false
 
-export default function Status({ row }) {
+export default function Status({ row, modify = true }) {
   const statusValue = useRef({ id: row.status.id, name: row.status.name })
   const { global } = useGlobal()
   const [input, setInput] = useState(false)
@@ -49,6 +49,10 @@ export default function Status({ row }) {
     setStatus(newStatus)
   }
 
+  const handleInput = () => {
+    if (modify) setInput(true)
+  }
+
   return input ? (
     <SelectInput
       onKeyUp={key}
@@ -62,6 +66,6 @@ export default function Status({ row }) {
       onChange={e => handleStatus(e.target.value)}
     />
   ) : (
-    <H6 onClick={() => setInput(true)}>{statusValue.current.name}</H6>
+    <H6 onClick={handleInput}>{statusValue.current.name}</H6>
   )
 }

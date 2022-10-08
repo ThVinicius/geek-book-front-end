@@ -6,7 +6,13 @@ import { Container } from "./lastSeenStyles"
 import InputIcon from "../inputIcon/Input"
 import CloseIcon from "@mui/icons-material/Close"
 
-function LastSeen({ lastSeen, collectionId, control = true, justify = "end" }) {
+function LastSeen({
+  lastSeen,
+  collectionId,
+  control = true,
+  justify = "end",
+  modify = true
+}) {
   const lastSeenValue = useRef(lastSeen)
   const [input, setInput] = useState(false)
   const [last, setLast] = useState(lastSeen)
@@ -56,6 +62,10 @@ function LastSeen({ lastSeen, collectionId, control = true, justify = "end" }) {
     fetch(...updateLastSeen(data))
   }
 
+  const handleInput = () => {
+    if (modify) setInput(true)
+  }
+
   return (
     <Container justify={justify}>
       {input ? (
@@ -70,7 +80,7 @@ function LastSeen({ lastSeen, collectionId, control = true, justify = "end" }) {
       ) : (
         <>
           {control && <p onClick={() => updateLast(-1)}>-</p>}
-          <h6 onClick={() => setInput(true)}>{lastSeenValue.current}</h6>
+          <h6 onClick={handleInput}>{lastSeenValue.current}</h6>
           {control && <p onClick={() => updateLast(1)}>+</p>}
         </>
       )}

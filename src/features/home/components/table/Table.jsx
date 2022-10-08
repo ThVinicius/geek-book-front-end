@@ -14,6 +14,8 @@ import { StyledTableCell } from "../../assets/tableStyles"
 import Rows from "../rows/Rows"
 import HandleResponse from "../../../../components/handleResponse/HandleResponse"
 
+const emptyMessage = "Você não possui nenhuma obra ativa 😞"
+
 export default function CustomizedTables({ search }) {
   const [collections, setCollections] = useState(null)
   const [response, fetch] = useApi()
@@ -28,7 +30,11 @@ export default function CustomizedTables({ search }) {
   }, [])
 
   return result === null || result === undefined || result.length === 0 ? (
-    <HandleResponse collections={result} search={search} status="ativa" />
+    <HandleResponse
+      collections={result}
+      search={search}
+      emptyMessage={emptyMessage}
+    />
   ) : (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 100 }} aria-label="customized table">

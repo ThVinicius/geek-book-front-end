@@ -9,6 +9,7 @@ import SignIn from "./features/signIn/pages/SignIn"
 import Home from "./features/home/pages/Home"
 import Add from "./features/add/pages/Add"
 import MyCollection from "./features/complete/pages/MyCollection"
+import Shared from "./features/shared/pages/Shared"
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/add" element={<Add />} />
           <Route path="/complete" element={<MyCollection />} />
+          <Route path="/shared/:shortUrl" element={<Shared />} />
         </Routes>
       </GlobalProvider>
     </BrowserRouter>

@@ -9,12 +9,14 @@ import SearchContainer from "../../../containers/search/Search"
 import HomeHeader from "../../home/components/header/Header"
 import Itens from "../components/itensContainer/Itens"
 import Header from "../components/header/Header"
+import { ShareContainer, ShareContent } from "../../../containers/share/share"
 
 export default function Shared() {
   const { shortUrl } = useParams()
   const [search, setSearch] = useState("")
   const [response, fetch] = useApi()
   const [collections, setCollections] = useState(null)
+  const [tab, setTab] = useState(0)
 
   useHandleRequest(response, setCollections)
 
@@ -23,20 +25,20 @@ export default function Shared() {
   }, [])
 
   return (
-    <>
+    <ShareContainer>
       <Header collections={collections} />
-      <AppContainer>
-        <Content>
-          <SearchContainer>
-            <HomeHeader search={search} setSearch={setSearch} />
-          </SearchContainer>
-          <Itens
-            collections={collections}
-            setCollections={setCollections}
-            search={search}
-          />
-        </Content>
-      </AppContainer>
-    </>
+      <ShareContent>
+        <SearchContainer>
+          <HomeHeader search={search} setSearch={setSearch} tab={tab} />
+        </SearchContainer>
+        <Itens
+          collections={collections}
+          setCollections={setCollections}
+          search={search}
+          tab={tab}
+          setTab={setTab}
+        />
+      </ShareContent>
+    </ShareContainer>
   )
 }

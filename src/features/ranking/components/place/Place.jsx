@@ -10,7 +10,7 @@ import AutoCompleteInput from "../autoCompleteInput/AutoCompleteInput"
 import ItemTemplate from "../../../../components/itemTemplate/ItemTemplate"
 import rank from "../../../../assets/images/rank.png"
 
-function Place({ collection }) {
+function Place({ collection, modify = true }) {
   const [rankingId, setRankingId] = useState(null)
   const [select, setSelect] = useState(null)
   const [response, fetch] = useApi()
@@ -64,11 +64,13 @@ function Place({ collection }) {
   return (
     <Container>
       <h1>{collection.position}º Lugar</h1>
-      <AutoCompleteInput
-        onChange={handleOnChange}
-        select={select}
-        loading={loading.current}
-      />
+      {modify && (
+        <AutoCompleteInput
+          onChange={handleOnChange}
+          select={select}
+          loading={loading.current}
+        />
+      )}
       {select ? (
         <ItemTemplate row={select} modify={false} />
       ) : (

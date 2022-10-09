@@ -1,11 +1,12 @@
 import useSearch from "../../../../hooks/useSearch"
-import ItemTemplate from "../../../../components/itemTemplate/ItemTemplate"
 import HandleResponse from "../../../../components/handleResponse/HandleResponse"
-import { Container } from "../../../complete/container/container"
+import { Container, Content } from "./itens"
+import BasicTabs from "../tabs/Tabs"
+import Switch from "../switch/Switch"
 
 const emptyMessage = "Link não encontrado 😞"
 
-export default function Itens({ collections, setCollections, search }) {
+function Itens({ collections, setCollections, search, tab, setTab }) {
   const { result } = useSearch(search, collections?.userCollections)
 
   return result === null || result === undefined || result.length === 0 ? (
@@ -16,14 +17,17 @@ export default function Itens({ collections, setCollections, search }) {
     />
   ) : (
     <Container>
-      {result.map((row, index) => (
-        <ItemTemplate
-          row={row}
+      <BasicTabs value={tab} onChange={setTab} />
+      <Content>
+        <Switch
+          tab={tab}
+          result={result}
+          collections={collections}
           setCollections={setCollections}
-          key={index}
-          modify={false}
         />
-      ))}
+      </Content>
     </Container>
   )
 }
+
+export default Itens

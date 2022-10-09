@@ -38,11 +38,12 @@ export default function ShareDialog({ open, setOpen }) {
             ) : (
               <Box>
                 <LinkContainer>
-                  {import.meta.env.VITE_APP_URL}
-                  {link.shortUrl}
+                  {`${import.meta.env.VITE_APP_URL}/shared/${link.shortUrl}`}
                 </LinkContainer>
                 <CopyToClipboard
-                  text={`${import.meta.env.VITE_APP_URL}${link.shortUrl}`}
+                  text={`${import.meta.env.VITE_APP_URL}/shared/${
+                    link.shortUrl
+                  }`}
                 >
                   <CopyIcon />
                 </CopyToClipboard>

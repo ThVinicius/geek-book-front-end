@@ -1,23 +1,19 @@
-export default function getCompleteUserCollections() {
+export default function getRanking() {
   const submitToken = true
 
-  const userCollections = { url: "/user-collections?statusId=2", method: "get" }
+  const ranking = { url: "/rankings", method: "get" }
 
-  const getAllStatus = { url: "/status", method: "get" }
-
-  const requests = [userCollections, getAllStatus]
+  const requests = [ranking]
 
   return [requests, submitToken, sucessCase, failCase]
 }
 
 function sucessCase(props) {
-  const { res, setResponse, global } = props
+  const { res, setResponse } = props
 
-  const [userCollections, getAllStatus] = res
+  const [resRanking] = res
 
-  global.status = getAllStatus.data
-
-  setResponse(userCollections.data)
+  setResponse(resRanking.data)
 }
 
 function failCase(props) {

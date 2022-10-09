@@ -5,7 +5,11 @@ function useHandleRequest(response, set, loading) {
     if (loading !== undefined) loading.current = false
 
     if (Array.isArray(response) || response?.nickname || response?.shortUrl) {
-      set(response)
+      set(prev => {
+        if (Array.isArray(prev)) return [...prev, ...response]
+
+        return response
+      })
     }
   }, [response])
 }

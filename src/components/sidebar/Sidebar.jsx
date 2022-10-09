@@ -8,6 +8,7 @@ import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd"
 import AutoStoriesIcon from "@mui/icons-material/AutoStories"
 import LibraryAddCheckIcon from "@mui/icons-material/LibraryAddCheck"
 import ShareIcon from "@mui/icons-material/Share"
+import EmojiEventsIcon from "@mui/icons-material/EmojiEvents"
 import Avatar from "@mui/material/Avatar"
 import { Header, Footer, Logout, Container } from "./sidebarStyles"
 import Logo from "../../assets/images/book-removebg-preview.png"
@@ -54,6 +55,10 @@ export default function Sidebar() {
             <MenuItem icon={<BookmarkAddIcon />}>
               Adicionar
               <Link to="/add" />
+            </MenuItem>
+            <MenuItem icon={<EmojiEventsIcon />}>
+              Ranking
+              <Link to="/ranking" />
             </MenuItem>
             <MenuItem onClick={() => setOpen(true)} icon={<ShareIcon />}>
               Compartilhar

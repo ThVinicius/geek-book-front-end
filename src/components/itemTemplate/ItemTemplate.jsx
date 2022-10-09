@@ -12,13 +12,13 @@ export default function ItemTemplate({ row, setCollections, modify = true }) {
 
   return (
     <Container>
-      <h1>{row.collection.name}</h1>
+      <h1>{row.name || row.collection.name}</h1>
       <Content>
-        <img src={row.collection.poster} alt="obra" />
+        <img src={row.poster || row.collection.poster} alt="obra" />
         <Box>
           <Info>
             <p>Tipo</p>
-            <h6>{row.collection.category.name}</h6>
+            <h6>{row.category || row.collection.category.name}</h6>
           </Info>
           <Info>
             <p>Status</p>
@@ -29,7 +29,7 @@ export default function ItemTemplate({ row, setCollections, modify = true }) {
             <LastSeen
               control={false}
               lastSeen={row.lastSeen}
-              collectionId={row.collection.id}
+              collectionId={row.collection?.id}
               justify="start"
               modify={modify}
             />

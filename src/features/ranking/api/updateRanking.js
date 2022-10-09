@@ -1,23 +1,17 @@
-export default function getCompleteUserCollections() {
+export default function updateRanking(data) {
   const submitToken = true
 
-  const userCollections = { url: "/user-collections?statusId=2", method: "get" }
+  const ranking = { url: "/rankings", method: "patch", data }
 
-  const getAllStatus = { url: "/status", method: "get" }
-
-  const requests = [userCollections, getAllStatus]
+  const requests = [ranking]
 
   return [requests, submitToken, sucessCase, failCase]
 }
 
 function sucessCase(props) {
-  const { res, setResponse, global } = props
+  const { setResponse } = props
 
-  const [userCollections, getAllStatus] = res
-
-  global.status = getAllStatus.data
-
-  setResponse(userCollections.data)
+  setResponse("Terminou")
 }
 
 function failCase(props) {

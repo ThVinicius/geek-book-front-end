@@ -16,9 +16,9 @@ function SelectInput({
 }) {
   const itens = () => {
     if (options !== null && options !== "loading") {
-      return options.map(({ id, name }, index) => (
+      return options.map(({ id, name, collection }, index) => (
         <MenuItem key={index} value={id}>
-          {name}
+          {collection?.name || name}
         </MenuItem>
       ))
     }

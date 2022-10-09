@@ -1,7 +1,7 @@
 export default function getActiveUserCollections() {
   const submitToken = true
 
-  const userCollections = { url: "/user-collections/1", method: "get" }
+  const userCollections = { url: "/user-collections?statusId=1", method: "get" }
 
   const getAllStatus = { url: "/status", method: "get" }
 

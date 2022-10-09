@@ -1,4 +1,4 @@
-import { useRef, useState } from "react"
+import { useEffect, useLayoutEffect, useRef, useState } from "react"
 import useApi from "../../hooks/useApi"
 import useToast from "../../hooks/useToast"
 import updateLastSeen from "./api/updateLastSeen"
@@ -13,15 +13,19 @@ function LastSeen({
   justify = "end",
   modify = true
 }) {
-  const lastSeenValue = useRef(lastSeen)
+  const [lastSeenValue, setLastSeenValue] = useState(lastSeen)
   const [input, setInput] = useState(false)
   const [last, setLast] = useState(lastSeen)
   const [response, fetch] = useApi(false)
 
   useToast(response)
 
+  useEffect(() => {
+    setLastSeenValue(lastSeen)
+  }, [lastSeen])
+
   const handleCancel = () => {
-    setLast(lastSeenValue.current)
+    setLast(lastSeenValue)
 
     setInput(false)
   }
@@ -31,7 +35,7 @@ function LastSeen({
       case "Enter":
         const lastSeen = Number(last)
 
-        lastSeenValue.current = lastSeen
+        setLastSeenValue(lastSeen)
 
         const data = { collectionId, lastSeen }
 
@@ -55,7 +59,7 @@ function LastSeen({
 
     const lastSeen = Number(last) + value
 
-    lastSeenValue.current = lastSeen
+    setLastSeenValue(lastSeen)
 
     const data = { collectionId, lastSeen }
 
@@ -80,7 +84,7 @@ function LastSeen({
       ) : (
         <>
           {control && <p onClick={() => updateLast(-1)}>-</p>}
-          <h6 onClick={handleInput}>{lastSeenValue.current}</h6>
+          <h6 onClick={handleInput}>{lastSeenValue}</h6>
           {control && <p onClick={() => updateLast(1)}>+</p>}
         </>
       )}

@@ -47,6 +47,8 @@ function failCase(props) {
       break
 
     case "Not Acceptable":
+      nav = undefined
+
       message = "Não é possivel criar um link com uma coleção vazia!"
 
       break

@@ -21,6 +21,15 @@ export default function ShareDialog({ open, setOpen }) {
   useHandleRequest(response, setLink)
 
   useEffect(() => {
+    if (
+      response?.message ===
+      "Não é possivel criar um link com uma coleção vazia!"
+    ) {
+      setOpen(false)
+    }
+  }, [response])
+
+  useEffect(() => {
     if (open) fetch(...createLink())
   }, [open])
 

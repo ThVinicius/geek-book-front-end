@@ -4,6 +4,7 @@ import getCompleteUserCollections from "../api/getCompleteUserCollections"
 import useHandleRequest from "../../../hooks/useHandleRequest"
 import useToast from "../../../hooks/useToast"
 import useSearch from "../../../hooks/useSearch"
+import usePersistence from "../../../hooks/usePersistence"
 import { Container } from "./container"
 import ItemTemplate from "../../../components/itemTemplate/ItemTemplate"
 import HandleResponse from "../../../components/handleResponse/HandleResponse"
@@ -14,6 +15,8 @@ export default function Itens({ search }) {
   const [collections, setCollections] = useState(null)
   const [response, fetch] = useApi()
   const { result } = useSearch(search, collections)
+
+  usePersistence()
 
   useHandleRequest(response, setCollections)
 

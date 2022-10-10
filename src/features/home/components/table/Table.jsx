@@ -4,6 +4,7 @@ import getActiveUserCollections from "../../api/getActiveUserCollections"
 import useToast from "../../../../hooks/useToast"
 import useHandleRequest from "../../../../hooks/useHandleRequest"
 import useSearch from "../../../../hooks/useSearch"
+import usePersistence from "../../../../hooks/usePersistence"
 import Table from "@mui/material/Table"
 import TableBody from "@mui/material/TableBody"
 import TableContainer from "@mui/material/TableContainer"
@@ -20,6 +21,8 @@ export default function CustomizedTables({ search }) {
   const [collections, setCollections] = useState(null)
   const [response, fetch] = useApi()
   const { result } = useSearch(search, collections)
+
+  usePersistence()
 
   useHandleRequest(response, setCollections)
 

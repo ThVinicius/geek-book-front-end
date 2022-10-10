@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react"
 import useApi from "../../../../hooks/useApi"
 import getRanking from "../../api/getRanking"
-import useHandleResponse from "../../hooks/useHandleResponse"
 import useHandleRequest from "../../../../hooks/useHandleRequest"
 import useToast from "../../../../hooks/useToast"
+import usePersistence from "../../../../hooks/usePersistence"
 import { Container } from "../../../complete/container/container"
 import Place from "../place/Place"
 
 export default function Itens() {
   const [ranking, setRanking] = useState(null)
   const [response, fetch] = useApi()
+
+  usePersistence()
 
   useHandleRequest(response, setRanking)
 

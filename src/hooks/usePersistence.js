@@ -1,10 +1,9 @@
-import { useEffect } from "react"
 import { useGlobal } from "../context/globalContext"
 
 export default function usePersistence() {
   const { global } = useGlobal()
 
-  useEffect(() => {
+  function loginPersistence() {
     const stringfyUser = localStorage.getItem("user")
 
     if (global.token === null && stringfyUser !== null) {
@@ -14,5 +13,7 @@ export default function usePersistence() {
 
       global.user = user
     }
-  }, [])
+  }
+
+  return { loginPersistence }
 }

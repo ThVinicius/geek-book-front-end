@@ -12,17 +12,18 @@ import HandleResponse from "../../../components/handleResponse/HandleResponse"
 const emptyMessage = "Você não possui nenhuma obra completa 😞"
 
 export default function Itens({ search }) {
+  const { loginPersistence } = usePersistence()
   const [collections, setCollections] = useState(null)
   const [response, fetch] = useApi()
   const { result } = useSearch(search, collections)
-
-  usePersistence()
 
   useHandleRequest(response, setCollections)
 
   useToast(response)
 
   useEffect(() => {
+    loginPersistence()
+
     fetch(...getCompleteUserCollections())
   }, [])
 

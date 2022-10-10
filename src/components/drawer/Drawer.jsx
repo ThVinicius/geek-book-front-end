@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { useGlobal } from "../../context/globalContext"
 import useWindowResize from "../../hooks/useWindowResize"
@@ -7,7 +7,6 @@ import Drawer from "@mui/material/Drawer"
 import Avatar from "@mui/material/Avatar"
 import LogoMenu from "../logoMenu/LogoMenu"
 import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd"
-import AutoStoriesIcon from "@mui/icons-material/AutoStories"
 import LibraryAddCheckIcon from "@mui/icons-material/LibraryAddCheck"
 import ShareIcon from "@mui/icons-material/Share"
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents"
@@ -18,7 +17,17 @@ export default function TemporaryDrawer({ open, setOpen }) {
   const windowSize = useWindowResize()
   const { logout } = useLogout()
   const [dialog, setDialog] = useState(false)
-  const { global } = useGlobal()
+  const { global, setGlobal } = useGlobal()
+
+  useEffect(() => {
+    const userStringfy = localStorage.getItem("user")
+
+    if (global.user === null && userStringfy !== null) {
+      const { token, ...user } = JSON.parse(userStringfy)
+
+      setGlobal({ ...global, token, user })
+    }
+  }, [])
 
   return (
     windowSize.width <= 420 && (

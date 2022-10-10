@@ -8,16 +8,17 @@ import { Container } from "../../../complete/container/container"
 import Place from "../place/Place"
 
 export default function Itens() {
+  const { loginPersistence } = usePersistence()
   const [ranking, setRanking] = useState(null)
   const [response, fetch] = useApi()
-
-  usePersistence()
 
   useHandleRequest(response, setRanking)
 
   useToast(response)
 
   useEffect(() => {
+    loginPersistence()
+
     fetch(...getRanking())
   }, [])
 

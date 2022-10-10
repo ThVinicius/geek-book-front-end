@@ -1,11 +1,12 @@
-import { useEffect, useRef, useState } from 'react'
-import useApi from '../../../../../hooks/useApi'
-import request from '../../../api/getCategories'
-import useHandleRequest from '../../../../../hooks/useHandleRequest'
-import SelectInput from '../../../../../components/selectInput/SelectInput'
-import AutoComplete from '../../../../../components/autoComplete/AutoComplete'
-import SubmitButton from '../../../../../components/loadingButton/Button'
-import { Container } from './formStyles'
+import { useEffect, useRef, useState } from "react"
+import usePersistence from "../../../../../hooks/usePersistence"
+import useApi from "../../../../../hooks/useApi"
+import request from "../../../api/getCategories"
+import useHandleRequest from "../../../../../hooks/useHandleRequest"
+import SelectInput from "../../../../../components/selectInput/SelectInput"
+import AutoComplete from "../../../../../components/autoComplete/AutoComplete"
+import SubmitButton from "../../../../../components/loadingButton/Button"
+import { Container } from "./formStyles"
 
 export default function CategoryForm({
   setStep,
@@ -16,11 +17,14 @@ export default function CategoryForm({
   options,
   setOptions
 }) {
+  const { loginPersistence } = usePersistence()
   const fetchNames = useRef(false)
   const [categories, setCategories] = useState(null)
   const [response, fetch] = useApi()
 
   useEffect(() => {
+    loginPersistence()
+
     fetch(...request())
   }, [])
 

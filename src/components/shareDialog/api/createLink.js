@@ -46,6 +46,11 @@ function failCase(props) {
 
       break
 
+    case "Not Acceptable":
+      message = "Não é possivel criar um link com uma coleção vazia!"
+
+      break
+
     case "Token expired/invalid":
       message = "Sua sessão expirou\nFaça o login novamente"
 

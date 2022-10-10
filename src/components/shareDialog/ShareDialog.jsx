@@ -3,6 +3,7 @@ import { CopyToClipboard } from "react-copy-to-clipboard"
 import useApi from "../../hooks/useApi"
 import createLink from "./api/createLink"
 import useHandleRequest from "../../hooks/useHandleRequest"
+import useToast from "../../hooks/useToast"
 import Button from "@mui/material/Button"
 import Dialog from "@mui/material/Dialog"
 import DialogActions from "@mui/material/DialogActions"
@@ -14,6 +15,8 @@ import { LinkContainer, CopyIcon, Box } from "./shareStyles"
 export default function ShareDialog({ open, setOpen }) {
   const [response, fetch] = useApi()
   const [link, setLink] = useState(null)
+
+  useToast(response)
 
   useHandleRequest(response, setLink)
 

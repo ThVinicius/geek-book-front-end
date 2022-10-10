@@ -3,15 +3,15 @@ import { useParams } from "react-router-dom"
 import useApi from "../../../hooks/useApi"
 import getLink from "../api/getLink"
 import useHandleRequest from "../../../hooks/useHandleRequest"
-import AppContainer from "../../../containers/app/App"
-import Content from "../../../containers/content/Content"
+import useWindowResize from "../../../hooks/useWindowResize"
 import SearchContainer from "../../../containers/search/Search"
 import HomeHeader from "../../home/components/header/Header"
 import Itens from "../components/itensContainer/Itens"
-import Header from "../components/header/Header"
+import HeaderRender from "../components/headerRender/HeaderRender"
 import { ShareContainer, ShareContent } from "../../../containers/share/share"
 
 export default function Shared() {
+  const windowSize = useWindowResize()
   const { shortUrl } = useParams()
   const [search, setSearch] = useState("")
   const [response, fetch] = useApi()
@@ -26,11 +26,18 @@ export default function Shared() {
 
   return (
     <ShareContainer>
-      <Header collections={collections} />
+      <HeaderRender
+        collections={collections}
+        search={search}
+        setSearch={setSearch}
+        tab={tab}
+      />
       <ShareContent>
-        <SearchContainer>
-          <HomeHeader search={search} setSearch={setSearch} tab={tab} />
-        </SearchContainer>
+        {windowSize.width > 420 && (
+          <SearchContainer>
+            <HomeHeader search={search} setSearch={setSearch} tab={tab} />
+          </SearchContainer>
+        )}
         <Itens
           collections={collections}
           setCollections={setCollections}

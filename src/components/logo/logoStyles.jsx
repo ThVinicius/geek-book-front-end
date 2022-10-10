@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components"
 
 const Container = styled.div`
   display: flex;
@@ -6,12 +6,13 @@ const Container = styled.div`
   gap: 10px;
 
   img {
-    width: 63.5px;
-    height: 63.5px;
+    width: ${props => props.imgSize};
+    height: ${props => props.imgSize};
   }
 
   h1 {
-    font: normal 700 36px 'Lexend', sans-serif;
+    font: normal 700 36px "Lexend", sans-serif;
+    font-size: ${props => props.fontSize};
     color: #000000;
   }
 

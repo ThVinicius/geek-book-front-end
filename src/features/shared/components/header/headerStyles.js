@@ -16,7 +16,7 @@ const Container = styled.header`
 const UserContainer = styled.div`
   width: 100%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
 
   p {

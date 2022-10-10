@@ -7,7 +7,7 @@ import Status from "../status/Status"
 import LastSeen from "../lastSeen/LastSeen"
 import { Container, Box, Content, Info, DeleteBox } from "./template"
 
-export default function ItemTemplate({ row, setCollections, modify = true }) {
+function ItemTemplate({ row, setCollections, modify = true, control = false }) {
   const [open, setOpen] = useState(false)
 
   return (
@@ -27,7 +27,7 @@ export default function ItemTemplate({ row, setCollections, modify = true }) {
           <Info>
             <p>Capítulo/episódio</p>
             <LastSeen
-              control={false}
+              control={control}
               lastSeen={row.lastSeen}
               collectionId={row.collection?.id}
               justify="start"
@@ -57,3 +57,5 @@ export default function ItemTemplate({ row, setCollections, modify = true }) {
     </Container>
   )
 }
+
+export default ItemTemplate

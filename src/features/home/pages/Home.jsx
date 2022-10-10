@@ -4,7 +4,7 @@ import Content from "../../../containers/content/Content"
 import Sidebar from "../../../components/sidebar/Sidebar"
 import SearchContainer from "../../../containers/search/Search"
 import HomeHeader from "../components/header/Header"
-import Table from "../components/table/Table"
+import Itens from "../components/itens/Itens"
 
 export default function Home() {
   const [search, setSearch] = useState("")
@@ -16,7 +16,7 @@ export default function Home() {
         <SearchContainer>
           <HomeHeader search={search} setSearch={setSearch} />
         </SearchContainer>
-        <Table search={search} />
+        <Itens search={search} />
       </Content>
     </AppContainer>
   )

@@ -20,6 +20,10 @@ const Container = styled.div`
     #86a8e7,
     #7f7fd5
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  @media (max-width: 420px) {
+    padding-top: 110px;
+  }
 `
 
 const Content = styled.div`

@@ -9,6 +9,10 @@ const Container = styled(ProSidebar)`
   .pro-item-content {
     font-weight: 500;
   }
+
+  @media (max-width: 420px) {
+    display: none;
+  }
 `
 
 const Header = styled(SidebarHeader)`

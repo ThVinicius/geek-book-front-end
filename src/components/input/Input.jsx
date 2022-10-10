@@ -5,10 +5,11 @@ export default function Input(props) {
 
   const { multiline = false, disabled = false, width = "75%" } = props
 
-  const { dataCy } = props
+  const { dataCy, size = null } = props
 
   return (
     <Container
+      size={size}
       data-cy={dataCy}
       label={label}
       type={type}

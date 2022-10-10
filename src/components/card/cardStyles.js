@@ -6,14 +6,6 @@ const Container = styled.div`
   background-color: #ffffff;
   padding: 10px;
   box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.75);
-
-  @media (max-width: 420px) {
-    position: fixed;
-    left: 0;
-    top: 0;
-    border-radius: 0;
-    z-index: 2;
-  }
 `
 
 export { Container }

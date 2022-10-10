@@ -1,6 +1,6 @@
 import Tabs from "@mui/material/Tabs"
 import Tab from "@mui/material/Tab"
-import { Container } from "../../../../containers/search/searchStyles"
+import Card from "../../../../components/card/Card"
 
 export default function BasicTabs({ value, onChange }) {
   const handleChange = (event, newValue) => {
@@ -8,11 +8,11 @@ export default function BasicTabs({ value, onChange }) {
   }
 
   return (
-    <Container>
+    <Card>
       <Tabs value={value} onChange={handleChange} centered>
         <Tab label="Coleção" />
         <Tab label="Ranking" />
       </Tabs>
-    </Container>
+    </Card>
   )
 }

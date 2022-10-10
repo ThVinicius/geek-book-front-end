@@ -3,7 +3,8 @@ import usePersistence from "../../../hooks/usePersistence"
 import AppContainer from "../../../containers/app/App"
 import Content from "../../../containers/content/Content"
 import Sidebar from "../../../components/sidebar/Sidebar"
-import Header from "../../../containers/search/Search"
+import Card from "../../../components/card/Card"
+import HeaderMobile from "../../../components/headerMobile/HeaderMobile"
 import Steps from "../../../components/steps/Steps"
 import StepsForm from "../components/stepsForm/StepsForm"
 
@@ -14,11 +15,12 @@ export default function Add() {
 
   return (
     <AppContainer>
+      <HeaderMobile />
       <Sidebar />
       <Content>
-        <Header>
+        <Card>
           <Steps step={step} />
-        </Header>
+        </Card>
         <StepsForm step={step} setStep={setStep} />
       </Content>
     </AppContainer>

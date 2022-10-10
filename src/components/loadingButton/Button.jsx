@@ -1,9 +1,10 @@
-import LoadingButton from '@mui/lab/LoadingButton'
-import SendIcon from '@mui/icons-material/Send'
+import LoadingButton from "@mui/lab/LoadingButton"
+import SendIcon from "@mui/icons-material/Send"
 
-export default function SubmitButton({ name, loading }) {
+export default function SubmitButton({ name, loading, dataCy }) {
   return (
     <LoadingButton
+      data-cy={dataCy}
       type="submit"
       endIcon={<SendIcon />}
       loading={loading}

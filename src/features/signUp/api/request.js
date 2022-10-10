@@ -1,7 +1,7 @@
 export default function request(data) {
-  const url = '/signup'
+  const url = "/signup"
 
-  const method = 'post'
+  const method = "post"
 
   const submitToken = false
 
@@ -13,11 +13,11 @@ export default function request(data) {
 function sucessCase(props) {
   const { setResponse } = props
 
-  const type = 'success'
+  const type = "success"
 
-  const message = 'Cadastro realizado com sucesso!'
+  const message = "Cadastro realizado com sucesso!"
 
-  const nav = '/signin'
+  const nav = "/"
 
   setResponse({ type, message, nav })
 }
@@ -25,23 +25,23 @@ function sucessCase(props) {
 function failCase(props) {
   const { res, setResponse } = props
 
-  const type = 'error'
+  const type = "error"
 
   let message
 
   switch (res.statusText) {
-    case 'Bad Request':
-      message = res.data.reduce((acc, cur) => `${acc}\n` + cur, '')
+    case "Bad Request":
+      message = res.data.reduce((acc, cur) => `${acc}\n` + cur, "")
 
       break
 
-    case 'Conflict':
+    case "Conflict":
       message = res.data
 
       break
 
     default:
-      message = 'Ocorreu um erro inesperado!\nTente mais tarde'
+      message = "Ocorreu um erro inesperado!\nTente mais tarde"
       console.log(res)
       break
   }

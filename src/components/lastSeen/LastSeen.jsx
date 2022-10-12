@@ -70,13 +70,18 @@ function LastSeen({
     if (modify) setInput(true)
   }
 
+  const handleLast = target => {
+    if (target.validity.valid || target.value === "") setLast(target.value)
+  }
+
   return (
     <Container justify={justify}>
       {input ? (
         <InputIcon
           label="Novo valor"
+          number={true}
           value={last}
-          onChange={e => setLast(e.target.value)}
+          onChange={e => handleLast(e.target)}
           onKeyUp={key}
           autoFocus={true}
           icon={<CloseIcon onClick={handleCancel} />}

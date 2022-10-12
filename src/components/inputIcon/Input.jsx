@@ -6,7 +6,7 @@ import { Container } from "./inputStyles"
 
 export default function InputIcon(props) {
   const { label, value, onChange, icon, onKeyUp = null } = props
-  const { autoFocus = false } = props
+  const { autoFocus = false, number = false } = props
 
   return (
     <FormControl sx={{ width: "150px" }} size="small" variant="outlined">
@@ -18,6 +18,9 @@ export default function InputIcon(props) {
         onChange={onChange}
         onKeyUp={onKeyUp}
         autoFocus={autoFocus}
+        inputProps={
+          number && { inputmode: "numeric", pattern: "[0-9]*[.]?[0-9]*" }
+        }
         endAdornment={
           <InputAdornment position="end">
             <IconButton aria-label="toggle password visibility" edge="end">

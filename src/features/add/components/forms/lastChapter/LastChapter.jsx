@@ -1,9 +1,4 @@
-import { useEffect } from "react"
 import { useGlobal } from "../../../../../context/globalContext"
-import useApi from "../../../../../hooks/useApi"
-import useHandleRequest from "../../../../../hooks/useHandleRequest"
-import getStatus from "../../../api/getStatus"
-import useToast from "../../../../../hooks/useToast"
 import Input from "../../../../../components/input/Input"
 import SelectInput from "../../../../../components/selectInput/SelectInput"
 import SubmitButton from "../../../../../components/loadingButton/Button"
@@ -18,16 +13,7 @@ function LastChapterForm({
   status,
   setStatus
 }) {
-  const [res, fetch] = useApi()
   const { global } = useGlobal()
-
-  // useHandleRequest(res, setOptions)
-
-  // useToast(res)
-
-  // useEffect(() => {
-  //   fetch(...getStatus())
-  // }, [])
 
   const back = () => {
     if (response !== "loading") setStep(prev => prev - 1)

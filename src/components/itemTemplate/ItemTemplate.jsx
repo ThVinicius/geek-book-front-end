@@ -12,7 +12,9 @@ function ItemTemplate({ row, setCollections, modify = true, control = false }) {
 
   return (
     <Container>
-      <h1>{row.name || row.collection.name}</h1>
+      <Tooltip title={row.name || row.collection.name} placement="top">
+        <h1>{row.name || row.collection.name}</h1>
+      </Tooltip>
       <Content>
         <img src={row.poster || row.collection.poster} alt="obra" />
         <Box>

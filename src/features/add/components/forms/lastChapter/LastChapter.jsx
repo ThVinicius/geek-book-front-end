@@ -19,14 +19,19 @@ function LastChapterForm({
     if (response !== "loading") setStep(prev => prev - 1)
   }
 
+  const handleLast = target => {
+    if (target.validity.valid || target.value === "") setLast(target.value)
+  }
+
   return (
     <Container onSubmit={submit}>
       <Input
         label="Ultímo capítulo visto"
         required={true}
+        number={true}
         disabled={response === "loading"}
         value={last}
-        onChange={e => setLast(e.target.value)}
+        onChange={e => handleLast(e.target)}
         width="250px"
       />
       <SelectInput

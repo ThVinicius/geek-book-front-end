@@ -54,14 +54,16 @@ function LastSeen({
     }
   }
 
-  const updateLast = value => {
+  const incrementLastSeen = value => {
     setLast(prev => prev + value)
 
     const lastSeen = Number(last) + value
 
     setLastSeenValue(lastSeen)
 
-    const data = { collectionId, lastSeen }
+    const increment = value
+
+    const data = { collectionId, increment }
 
     fetch(...updateLastSeen(data))
   }
@@ -88,9 +90,9 @@ function LastSeen({
         />
       ) : (
         <>
-          {control && <p onClick={() => updateLast(-1)}>-</p>}
+          {control && <p onClick={() => incrementLastSeen(-1)}>-</p>}
           <h6 onClick={handleInput}>{lastSeenValue}</h6>
-          {control && <p onClick={() => updateLast(1)}>+</p>}
+          {control && <p onClick={() => incrementLastSeen(1)}>+</p>}
         </>
       )}
     </Container>

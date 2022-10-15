@@ -1,7 +1,7 @@
 export default function request(data) {
   const submitToken = true
 
-  const request = { url: '/user-collections', method: 'post', data }
+  const request = { url: "/user-collections", method: "post", data }
 
   const requests = [request]
 
@@ -9,11 +9,11 @@ export default function request(data) {
 }
 
 function sucessCase(props) {
-  const { res, global, setGlobal, setResponse } = props
+  const { res, global, setResponse } = props
 
-  const type = 'success'
+  const type = "success"
 
-  const message = 'Adicionado com sucesso!'
+  const message = "Adicionado com sucesso!"
 
   const [data] = res
 
@@ -25,40 +25,42 @@ function sucessCase(props) {
 function failCase(props) {
   const { res, setResponse } = props
 
-  const type = 'error'
+  const type = "error"
 
-  let nav = '/'
+  let nav = "/"
 
   let message
 
   switch (res?.statusText) {
-    case 'Bad Request':
-      if (typeof res.data === 'string') message = res.data
-      else message = res.data.reduce((acc, cur) => `${acc}\n` + cur, '')
+    case "Bad Request":
+      if (typeof res.data === "string") message = res.data
+      else message = res.data.reduce((acc, cur) => `${acc}\n` + cur, "")
 
       nav = undefined
 
       break
 
-    case 'Unauthorized':
-    case 'Upgrade Required':
+    case "Unauthorized":
+    case "Upgrade Required":
       message =
-        'Ocorreu um um erro durante sua autenticação\nTente fazer o login novamente'
+        "Ocorreu um um erro durante sua autenticação\nTente fazer o login novamente"
 
       break
 
-    case 'Conflit':
+    case "Conflict":
       message = res.data
 
+      nav = undefined
+
       break
 
-    case 'Token expired/invalid':
-      message = 'Sua sessão expirou\nFaça o login novamente'
+    case "Token expired/invalid":
+      message = "Sua sessão expirou\nFaça o login novamente"
 
       break
 
     default:
-      message = 'Ocorreu um erro inesperado!\nTente mais tarde'
+      message = "Ocorreu um erro inesperado!\nTente mais tarde"
       break
   }
 

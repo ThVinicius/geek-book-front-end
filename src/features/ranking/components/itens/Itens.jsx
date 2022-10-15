@@ -6,6 +6,7 @@ import useToast from "../../../../hooks/useToast"
 import usePersistence from "../../../../hooks/usePersistence"
 import { Container } from "../../../complete/container/container"
 import Place from "../place/Place"
+import { Glass } from "../../../../components/spinner/Spinners"
 
 export default function Itens() {
   const { loginPersistence } = usePersistence()
@@ -24,10 +25,13 @@ export default function Itens() {
 
   return (
     <Container>
-      {ranking &&
+      {ranking ? (
         ranking.map((collection, index) => (
           <Place collection={collection} key={index} />
-        ))}
+        ))
+      ) : (
+        <Glass />
+      )}
     </Container>
   )
 }

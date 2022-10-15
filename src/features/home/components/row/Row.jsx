@@ -37,7 +37,11 @@ export default function Row({ row, setCollections }) {
           <Status row={row} />
         </StyledTableCell>
         <StyledTableCell align="right">
-          <LastSeen lastSeen={row.lastSeen} collectionId={row.collection.id} />
+          <LastSeen
+            lastSeen={row.lastSeen}
+            setCollections={setCollections}
+            collectionId={row.collection.id}
+          />
         </StyledTableCell>
         <StyledTableCell align="right">
           <Tooltip title={<p style={{ fontSize: "16px" }}>Deletar</p>}>

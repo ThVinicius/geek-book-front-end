@@ -1,12 +1,12 @@
-import { useEffect, useRef, useState } from 'react'
-import useApi from '../../hooks/useApi'
-import request from './request'
-import useToast from '../../hooks/useToast'
-import useHandleRequest from '../../hooks/useHandleRequest'
-import Stack from '@mui/material/Stack'
-import TextField from '@mui/material/TextField'
-import Autocomplete from '@mui/material/Autocomplete'
-import CircularProgress from '@mui/material/CircularProgress'
+import { useEffect, useRef, useState } from "react"
+import useApi from "../../hooks/useApi"
+import request from "./request"
+import useToast from "../../hooks/useToast"
+import useHandleRequest from "../../hooks/useHandleRequest"
+import Stack from "@mui/material/Stack"
+import TextField from "@mui/material/TextField"
+import Autocomplete from "@mui/material/Autocomplete"
+import CircularProgress from "@mui/material/CircularProgress"
 
 export default function AutoComplete({
   label,
@@ -25,7 +25,11 @@ export default function AutoComplete({
   useToast(response)
 
   useEffect(() => {
-    if (category !== '') fetch(...request(category))
+    if (category !== "") {
+      setOptions([])
+
+      fetch(...request(category))
+    }
   }, [category])
 
   return (

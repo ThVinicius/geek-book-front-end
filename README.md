@@ -58,7 +58,7 @@ Essa rota lista suas obras cadastradas completas.
 
 Nela é possivel:
 
-- Visualizar o pôster obra.
+- Visualizar o pôster da obra.
 - Visualizar e mudar o status da obra
 - Visualizar e mudar o ultímo capítulo/episódio visto
   - Ao clicar no último capítulo/episodio da obra aparecera um input, para salvar o valor deve-se apertar o enter, Esc ou clicar no X o input some.

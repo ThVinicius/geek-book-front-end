@@ -38,7 +38,11 @@ export default function Form() {
         value={password}
         onChange={e => setPassword(e.target.value)}
       />
-      <SubmitButton dataCy="submit" name="Logar" />
+      <SubmitButton
+        dataCy="submit"
+        name="Logar"
+        loading={response === "loading"}
+      />
       <Anchor data-cy="signUp link" to="/signup">
         Não possuo cadastro
       </Anchor>

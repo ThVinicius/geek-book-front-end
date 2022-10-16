@@ -5,7 +5,6 @@ const GlobalContext = createContext()
 export function GlobalProvider({ children }) {
   const [global, setGlobal] = useState({
     token: null,
-    userCollections: null,
     user: null,
     status: null
   })

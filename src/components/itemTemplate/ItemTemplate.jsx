@@ -31,6 +31,7 @@ function ItemTemplate({ row, setCollections, modify = true, control = false }) {
             <LastSeen
               control={control}
               lastSeen={row.lastSeen}
+              setCollections={setCollections}
               collectionId={row.collection?.id}
               justify="start"
               modify={modify}

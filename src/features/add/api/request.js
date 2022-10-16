@@ -8,16 +8,10 @@ export default function request(data) {
   return [requests, submitToken, sucessCase, failCase]
 }
 
-function sucessCase(props) {
-  const { res, global, setResponse } = props
-
+function sucessCase({ setResponse }) {
   const type = "success"
 
   const message = "Adicionado com sucesso!"
-
-  const [data] = res
-
-  global.userCollections = data.data
 
   setResponse({ type, message })
 }

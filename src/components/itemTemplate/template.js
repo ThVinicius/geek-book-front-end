@@ -30,6 +30,10 @@ const Content = styled.div`
 `
 
 const Info = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+
   p {
     font: normal 500 18px "Lexend", sans-serif;
   }

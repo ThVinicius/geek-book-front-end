@@ -81,7 +81,7 @@ Nessa rota é possivel cadastrar uma obra em sua coleção.
 - Descrição (opcional)
   - Preencha a sinopse e o link do pôster
 - Informações adicionais
-  - Preencha o último capito/episodio visto e o status dela
+  - Preencha o último capítulo/episodio visto e o status dela
 
 <h1 align="center" >
 <img alt="gif" src="./readme/add.gif">

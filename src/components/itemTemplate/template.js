@@ -39,7 +39,15 @@ const Info = styled.div`
   }
 
   h6 {
-    font: normal 300 18px "Lexend", sans-serif;
+    width: 100%;
+    background-color: #0db8df;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    padding: 5px;
+    font: normal 4 00 19px "Lexend", sans-serif;
   }
 `
 

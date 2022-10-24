@@ -7,11 +7,6 @@ const Container = styled.div`
   align-items: center;
   gap: 5px;
 
-  h6 {
-    font: normal 500 18px "Poppins", sans-serif;
-    color: green;
-  }
-
   p {
     font: normal 500 18px "Poppins", sans-serif;
     cursor: pointer;

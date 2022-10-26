@@ -10,8 +10,12 @@ const Container = styled.div`
   align-items: center;
 
   h1 {
+    width: 310px;
     font: normal 700 23px "Lexend", sans-serif;
     color: #000000;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 
   img {
@@ -26,12 +30,24 @@ const Content = styled.div`
 `
 
 const Info = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+
   p {
     font: normal 500 18px "Lexend", sans-serif;
   }
 
   h6 {
-    font: normal 300 18px "Lexend", sans-serif;
+    width: 100%;
+    background-color: #0db8df;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    padding: 5px;
+    font: normal 4 00 19px "Lexend", sans-serif;
   }
 `
 

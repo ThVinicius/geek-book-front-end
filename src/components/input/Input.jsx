@@ -5,7 +5,7 @@ export default function Input(props) {
 
   const { multiline = false, disabled = false, width = "75%" } = props
 
-  const { dataCy, size = null } = props
+  const { dataCy, size = null, number = false } = props
 
   return (
     <Container
@@ -19,6 +19,9 @@ export default function Input(props) {
       onChange={onChange}
       multiline={multiline}
       width={width}
+      inputProps={
+        number && { inputmode: "numeric", pattern: "[0-9]*[.]?[0-9]*" }
+      }
     />
   )
 }

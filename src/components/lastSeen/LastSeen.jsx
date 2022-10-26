@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react"
+import { useState } from "react"
 import useApi from "../../hooks/useApi"
 import useToast from "../../hooks/useToast"
 import updateLastSeen from "./api/updateLastSeen"
@@ -8,24 +8,20 @@ import CloseIcon from "@mui/icons-material/Close"
 
 function LastSeen({
   lastSeen,
+  setCollections,
   collectionId,
   control = true,
   justify = "end",
   modify = true
 }) {
-  const [lastSeenValue, setLastSeenValue] = useState(lastSeen)
   const [input, setInput] = useState(false)
   const [last, setLast] = useState(lastSeen)
   const [response, fetch] = useApi(false)
 
   useToast(response)
 
-  useEffect(() => {
-    setLastSeenValue(lastSeen)
-  }, [lastSeen])
-
   const handleCancel = () => {
-    setLast(lastSeenValue)
+    setLast(lastSeen)
 
     setInput(false)
   }
@@ -35,13 +31,20 @@ function LastSeen({
       case "Enter":
         const lastSeen = Number(last)
 
-        setLastSeenValue(lastSeen)
-
         const data = { collectionId, lastSeen }
 
         fetch(...updateLastSeen(data))
 
         setInput(false)
+
+        setCollections(prev =>
+          prev.map(item => {
+            if (item.collection.id === collectionId)
+              return { ...item, lastSeen }
+
+            return item
+          })
+        )
 
         return
 
@@ -54,20 +57,32 @@ function LastSeen({
     }
   }
 
-  const updateLast = value => {
+  const incrementLastSeen = value => {
     setLast(prev => prev + value)
 
     const lastSeen = Number(last) + value
 
-    setLastSeenValue(lastSeen)
+    const increment = value
 
-    const data = { collectionId, lastSeen }
+    const data = { collectionId, increment }
 
     fetch(...updateLastSeen(data))
+
+    setCollections(prev =>
+      prev.map(item => {
+        if (item.collection.id === collectionId) return { ...item, lastSeen }
+
+        return item
+      })
+    )
   }
 
   const handleInput = () => {
     if (modify) setInput(true)
+  }
+
+  const handleLast = target => {
+    if (target.validity.valid || target.value === "") setLast(target.value)
   }
 
   return (
@@ -75,17 +90,18 @@ function LastSeen({
       {input ? (
         <InputIcon
           label="Novo valor"
+          number={true}
           value={last}
-          onChange={e => setLast(e.target.value)}
+          onChange={e => handleLast(e.target)}
           onKeyUp={key}
           autoFocus={true}
           icon={<CloseIcon onClick={handleCancel} />}
         />
       ) : (
         <>
-          {control && <p onClick={() => updateLast(-1)}>-</p>}
-          <h6 onClick={handleInput}>{lastSeenValue}</h6>
-          {control && <p onClick={() => updateLast(1)}>+</p>}
+          {control && <p onClick={() => incrementLastSeen(-1)}>-</p>}
+          <h6 onClick={handleInput}>{lastSeen}</h6>
+          {control && <p onClick={() => incrementLastSeen(1)}>+</p>}
         </>
       )}
     </Container>

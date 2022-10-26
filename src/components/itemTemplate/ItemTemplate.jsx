@@ -12,12 +12,22 @@ function ItemTemplate({ row, setCollections, modify = true, control = false }) {
 
   return (
     <Container>
-      <h1>{row.name || row.collection.name}</h1>
+      <Tooltip
+        title={
+          <h2 style={{ fontSize: "18px" }}>
+            {row.name || row.collection.name}
+          </h2>
+        }
+        arrow
+        placement="top"
+      >
+        <h1>{row.name || row.collection.name}</h1>
+      </Tooltip>
       <Content>
         <img src={row.poster || row.collection.poster} alt="obra" />
         <Box>
           <Info>
-            <p>Tipo</p>
+            <p>Categoria</p>
             <h6>{row.category || row.collection.category.name}</h6>
           </Info>
           <Info>
@@ -29,6 +39,7 @@ function ItemTemplate({ row, setCollections, modify = true, control = false }) {
             <LastSeen
               control={control}
               lastSeen={row.lastSeen}
+              setCollections={setCollections}
               collectionId={row.collection?.id}
               justify="start"
               modify={modify}

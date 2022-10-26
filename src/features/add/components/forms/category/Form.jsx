@@ -7,6 +7,7 @@ import SelectInput from "../../../../../components/selectInput/SelectInput"
 import AutoComplete from "../../../../../components/autoComplete/AutoComplete"
 import SubmitButton from "../../../../../components/loadingButton/Button"
 import { Container } from "./formStyles"
+import { Glass } from "../../../../../components/spinner/Spinners"
 
 export default function CategoryForm({
   setStep,
@@ -44,23 +45,29 @@ export default function CategoryForm({
 
   return (
     <Container onSubmit={next}>
-      <SelectInput
-        label="Categoria"
-        options={categories}
-        value={category}
-        onChange={e => handleCategory(e.target.value)}
-      />
-      <AutoComplete
-        label="Nome"
-        category={category}
-        options={options}
-        setOptions={setOptions}
-        loading={fetchNames.current}
-        value={name}
-        onChange={(e, newValue) => setName(newValue)}
-      />
+      {categories ? (
+        <>
+          <SelectInput
+            label="Categoria"
+            options={categories}
+            value={category}
+            onChange={e => handleCategory(e.target.value)}
+          />
+          <AutoComplete
+            label="Nome"
+            category={category}
+            options={options}
+            setOptions={setOptions}
+            loading={fetchNames.current}
+            value={name}
+            onChange={(e, newValue) => setName(newValue)}
+          />
 
-      <SubmitButton name="Próximo" />
+          <SubmitButton name="Próximo" />
+        </>
+      ) : (
+        <Glass />
+      )}
     </Container>
   )
 }

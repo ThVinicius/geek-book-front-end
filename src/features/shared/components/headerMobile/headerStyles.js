@@ -8,6 +8,7 @@ const Container = styled.header`
   top: 0;
   left: 0;
   display: flex;
+  z-index: 2;
 `
 
 const Logo = styled.div`

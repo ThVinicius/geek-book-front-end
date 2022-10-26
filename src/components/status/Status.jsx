@@ -43,12 +43,14 @@ export default function Status({ row, modify = true }) {
     fetch(...updateStatus(data))
 
     statusValue.current = newStatus
-
-    setInput(false)
   }
 
   const handleInput = () => {
     if (modify) setInput(true)
+  }
+
+  const onClose = event => {
+    setInput(false)
   }
 
   return input ? (
@@ -62,6 +64,7 @@ export default function Status({ row, modify = true }) {
       options={global.status}
       value={status.id}
       onChange={e => handleStatus(e.target.value)}
+      onClose={onClose}
     />
   ) : (
     <H6 onClick={handleInput}>

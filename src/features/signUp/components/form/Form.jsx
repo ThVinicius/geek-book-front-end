@@ -61,7 +61,11 @@ export default function Form() {
         value={confirmPassword}
         onChange={e => setConfirmPassword(e.target.value)}
       />
-      <SubmitButton dataCy="submit" name="Cadastrar" />
+      <SubmitButton
+        dataCy="submit"
+        name="Cadastrar"
+        loading={response === "loading"}
+      />
       <Anchor to="/">Já possuo cadastro</Anchor>
     </Container>
   )

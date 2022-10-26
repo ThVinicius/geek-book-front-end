@@ -9,11 +9,13 @@ export default function getStatus() {
 }
 
 function sucessCase(props) {
-  const { res, setResponse } = props
+  const { res, setGlobal } = props
 
   const [response] = res
 
-  setResponse(response.data)
+  setGlobal(prev => {
+    return { ...prev, status: response.data }
+  })
 }
 
 function failCase(props) {

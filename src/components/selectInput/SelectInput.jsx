@@ -8,6 +8,7 @@ function SelectInput({
   options,
   value,
   onChange,
+  onClose,
   none = true,
   size = null,
   onKeyUp,
@@ -28,7 +29,6 @@ function SelectInput({
     <FormControl
       onKeyUp={onKeyUp}
       sx={{ m: 1, minWidth: autoWidth ? 0 : 120 }}
-      focused={focused}
       size={size}
       autoWidth={autoWidth}
     >
@@ -37,6 +37,7 @@ function SelectInput({
         value={value}
         required
         onChange={onChange}
+        onClose={onClose}
         label={label}
         open={focused}
       >

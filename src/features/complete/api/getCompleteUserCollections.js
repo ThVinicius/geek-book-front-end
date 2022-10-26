@@ -11,11 +11,11 @@ export default function getCompleteUserCollections() {
 }
 
 function sucessCase(props) {
-  const { res, setResponse, global } = props
+  const { res, setResponse, setGlobal } = props
 
   const [userCollections, getAllStatus] = res
 
-  global.status = getAllStatus.data
+  setGlobal(prev => ({ ...prev, status: getAllStatus.data }))
 
   setResponse(userCollections.data)
 }

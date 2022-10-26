@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css"
 import { GlobalProvider } from "./context/globalContext"
 import SignUp from "./features/signUp/pages/SignUp"
 import SignIn from "./features/signIn/pages/SignIn"
-import Home from "./features/home/pages/Home"
+import Active from "./features/active/pages/Active"
 import Add from "./features/add/pages/Add"
 import MyCollection from "./features/complete/pages/MyCollection"
 import Shared from "./features/shared/pages/Shared"
@@ -22,7 +22,7 @@ export default function App() {
         <Routes>
           <Route path="/signup" element={<SignUp />} />
           <Route path="/" element={<SignIn />} />
-          <Route path="/home" element={<Home />} />
+          <Route path="/active" element={<Active />} />
           <Route path="/add" element={<Add />} />
           <Route path="/complete" element={<MyCollection />} />
           <Route path="/shared/:shortUrl" element={<Shared />} />

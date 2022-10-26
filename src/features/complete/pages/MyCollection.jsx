@@ -3,7 +3,7 @@ import AppContainer from "../../../containers/app/App"
 import Content from "../../../containers/content/Content"
 import Sidebar from "../../../components/sidebar/Sidebar"
 import SearchContainer from "../../../containers/search/Search"
-import HomeHeader from "../../home/components/header/Header"
+import HomeHeader from "../../active/components/header/Header"
 import Itens from "../container/ItensContainer"
 
 export default function MyCollection() {

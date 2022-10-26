@@ -2,7 +2,7 @@ import { useState } from "react"
 import useApi from "../../hooks/useApi"
 import useToast from "../../hooks/useToast"
 import updateLastSeen from "./api/updateLastSeen"
-import { Container } from "./lastSeenStyles"
+import { Container, H6, Increment, Decrement } from "./lastSeenStyles"
 import InputIcon from "../inputIcon/Input"
 import CloseIcon from "@mui/icons-material/Close"
 
@@ -99,9 +99,13 @@ function LastSeen({
         />
       ) : (
         <>
-          {control && <p onClick={() => incrementLastSeen(-1)}>-</p>}
-          <h6 onClick={handleInput}>{lastSeen}</h6>
-          {control && <p onClick={() => incrementLastSeen(1)}>+</p>}
+          {control && (
+            <Decrement onClick={() => incrementLastSeen(-1)}>-</Decrement>
+          )}
+          <H6 onClick={handleInput}>{lastSeen}</H6>
+          {control && (
+            <Increment onClick={() => incrementLastSeen(1)}>+</Increment>
+          )}
         </>
       )}
     </Container>

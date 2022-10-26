@@ -1,7 +1,7 @@
 export default function request(data) {
-  const url = '/signin'
+  const url = "/signin"
 
-  const method = 'post'
+  const method = "post"
 
   const submitToken = false
 
@@ -17,7 +17,7 @@ function sucessCase(props) {
 
   const userStringfy = JSON.stringify(response.data)
 
-  localStorage.setItem('user', userStringfy)
+  localStorage.setItem("user", userStringfy)
 
   const { token, ...user } = response.data
 
@@ -25,29 +25,29 @@ function sucessCase(props) {
 
   global.user = user
 
-  navigate('/home')
+  navigate("/active")
 }
 
 function failCase(props) {
   const { res, setResponse } = props
 
-  const type = 'error'
+  const type = "error"
 
   let message
 
   switch (res.statusText) {
-    case 'Bad Request':
-      message = res.data.reduce((acc, cur) => `${acc}\n` + cur, '')
+    case "Bad Request":
+      message = res.data.reduce((acc, cur) => `${acc}\n` + cur, "")
 
       break
 
-    case 'Unauthorized':
-      message = 'Email ou senha estão incorretos.'
+    case "Unauthorized":
+      message = "Email ou senha estão incorretos."
 
       break
 
     default:
-      message = 'Ocorreu um erro inesperado!\nTente mais tarde'
+      message = "Ocorreu um erro inesperado!\nTente mais tarde"
       break
   }
 

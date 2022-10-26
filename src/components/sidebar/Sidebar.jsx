@@ -46,7 +46,7 @@ export default function Sidebar() {
           <Menu iconShape="circle">
             <MenuItem icon={<AutoStoriesIcon />}>
               Ativos
-              <Link to="/home" />
+              <Link to="/active" />
             </MenuItem>
             <MenuItem icon={<LibraryAddCheckIcon />}>
               Completos

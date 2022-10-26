@@ -5,7 +5,7 @@ import Tooltip from "@mui/material/Tooltip"
 import DeleteModal from "../deleteModal/DeleteModal"
 import Status from "../status/Status"
 import LastSeen from "../lastSeen/LastSeen"
-import { Container, Box, Content, Info, DeleteBox } from "./template"
+import { Container, Box, Content, Info, DeleteBox, H1 } from "./template"
 
 function ItemTemplate({ row, setCollections, modify = true, control = false }) {
   const [open, setOpen] = useState(false)
@@ -21,7 +21,7 @@ function ItemTemplate({ row, setCollections, modify = true, control = false }) {
         arrow
         placement="top"
       >
-        <h1>{row.name || row.collection.name}</h1>
+        <H1>{row.name || row.collection.name}</H1>
       </Tooltip>
       <Content>
         <img src={row.poster || row.collection.poster} alt="obra" />

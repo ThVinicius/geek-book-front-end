@@ -18,7 +18,7 @@ export default function SignIn() {
       global.token = token
       global.user = user
 
-      navigate("/home")
+      navigate("/active")
     }
   }, [])
 

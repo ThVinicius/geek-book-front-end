@@ -6,7 +6,7 @@ import SearchContainer from "../../../containers/search/Search"
 import HomeHeader from "../components/header/Header"
 import Itens from "../components/itens/Itens"
 
-export default function Home() {
+export default function Active() {
   const [search, setSearch] = useState("")
 
   return (

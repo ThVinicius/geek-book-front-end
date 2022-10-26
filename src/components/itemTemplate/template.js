@@ -9,21 +9,22 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
 
-  h1 {
-    width: 310px;
-    font: normal 700 23px "Lexend", sans-serif;
-    color: #000000;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
-
   img {
     width: 150px;
     height: 220px;
     border-radius: 4px;
   }
 `
+
+const H1 = styled.h1`
+  width: 310px;
+  font: normal 700 23px "Lexend", sans-serif;
+  color: #000000;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+`
+
 const Content = styled.div`
   display: flex;
   gap: 9px;
@@ -47,7 +48,7 @@ const Info = styled.div`
     justify-content: center;
     border-radius: 5px;
     padding: 5px;
-    font: normal 4 00 19px "Lexend", sans-serif;
+    font: normal 400 19px "Lexend", sans-serif;
   }
 `
 
@@ -64,4 +65,4 @@ const DeleteBox = styled.div`
   justify-content: end;
 `
 
-export { Container, Content, Box, Info, DeleteBox }
+export { Container, Content, Box, Info, DeleteBox, H1 }

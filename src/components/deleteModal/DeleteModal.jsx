@@ -1,6 +1,6 @@
 import * as React from "react"
 import useApi from "../../hooks/useApi"
-import removeCollection from "../../features/home/api/removeCollection"
+import removeCollection from "../../features/active/api/removeCollection"
 import useToast from "../../hooks/useToast"
 import Button from "@mui/material/Button"
 import Dialog from "@mui/material/Dialog"

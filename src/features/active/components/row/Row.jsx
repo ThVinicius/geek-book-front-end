@@ -9,6 +9,7 @@ import IconButton from "@mui/material/IconButton"
 import LastSeen from "../../../../components/lastSeen/LastSeen"
 import DeleteModal from "../../../../components/deleteModal/DeleteModal"
 import Status from "../../../../components/status/Status"
+import { H6 } from "./rowStyle"
 
 export default function Row({ row, setCollections }) {
   const [open, setOpen] = useState(false)
@@ -31,9 +32,9 @@ export default function Row({ row, setCollections }) {
           </Tooltip>
         </StyledTableCell>
         <StyledTableCell align="right">
-          {row.collection.category.name}
+          <H6>{row.collection.category.name}</H6>
         </StyledTableCell>
-        <StyledTableCell align="right">
+        <StyledTableCell align="center">
           <Status row={row} />
         </StyledTableCell>
         <StyledTableCell align="right">

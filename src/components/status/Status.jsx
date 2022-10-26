@@ -4,7 +4,7 @@ import updateStatus from "./api/updateStatus"
 import useToast from "../../hooks/useToast"
 import { useGlobal } from "../../context/globalContext"
 import SelectInput from "../selectInput/SelectInput"
-import { H6 } from "./statusStyles"
+import { Container, H6 } from "./statusStyles"
 
 const wait = false
 
@@ -53,22 +53,28 @@ export default function Status({ row, modify = true }) {
     setInput(false)
   }
 
-  return input ? (
-    <SelectInput
-      onKeyUp={key}
-      size="small"
-      autoWidth={true}
-      focused={true}
-      none={false}
-      label="Status"
-      options={global.status}
-      value={status.id}
-      onChange={e => handleStatus(e.target.value)}
-      onClose={onClose}
-    />
-  ) : (
-    <H6 onClick={handleInput}>
-      {typeof row.status === "string" ? row.status : statusValue.current.name}
-    </H6>
+  return (
+    <Container>
+      {input ? (
+        <SelectInput
+          onKeyUp={key}
+          size="small"
+          autoWidth={true}
+          focused={true}
+          none={false}
+          label="Status"
+          options={global.status}
+          value={status.id}
+          onChange={e => handleStatus(e.target.value)}
+          onClose={onClose}
+        />
+      ) : (
+        <H6 onClick={handleInput}>
+          {typeof row.status === "string"
+            ? row.status
+            : statusValue.current.name}
+        </H6>
+      )}
+    </Container>
   )
 }

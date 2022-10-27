@@ -1,18 +1,18 @@
-import { useState } from "react"
-import useApi from "../../../../hooks/useApi"
-import request from "../../api/request"
-import useToast from "../../../../hooks/useToast"
-import InputPassword from "../../../../components/inputPassword/Input"
-import Input from "../../../../components/input/Input"
-import SubmitButton from "../../../../components/loadingButton/Button"
-import { Container, Anchor } from "./formStyles"
+import { useState } from 'react'
+import useApi from '../../../../hooks/useApi'
+import request from '../../api/request'
+import useToast from '../../../../hooks/useToast'
+import InputPassword from '../../../../components/inputPassword/Input'
+import Input from '../../../../components/input/Input'
+import SubmitButton from '../../../../components/loadingButton/Button'
+import { Container, Anchor } from './formStyles'
 
 export default function Form() {
-  const [nickname, setNickname] = useState("")
-  const [avatar, setAvatar] = useState("")
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [confirmPassword, setConfirmPassword] = useState("")
+  const [nickname, setNickname] = useState('')
+  const [avatar, setAvatar] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
   const [response, fetch] = useApi()
 
   useToast(response)
@@ -20,7 +20,11 @@ export default function Form() {
   function submit(event) {
     event.preventDefault()
 
-    const data = { nickname, avatar, email, password, confirmPassword }
+    let aux = avatar
+
+    if (avatar.trim() === '') aux = null
+
+    const data = { nickname, avatar: aux, email, password, confirmPassword }
 
     fetch(...request(data))
   }
@@ -64,7 +68,7 @@ export default function Form() {
       <SubmitButton
         dataCy="submit"
         name="Cadastrar"
-        loading={response === "loading"}
+        loading={response === 'loading'}
       />
       <Anchor to="/">Já possuo cadastro</Anchor>
     </Container>

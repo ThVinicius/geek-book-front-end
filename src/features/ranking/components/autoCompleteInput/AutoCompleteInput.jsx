@@ -1,11 +1,11 @@
-import { useState } from "react"
-import useApi from "../../../../hooks/useApi"
-import getMissing from "../../api/getMissing"
-import useToast from "../../../../hooks/useToast"
-import useHandleRequest from "../../../../hooks/useHandleRequest"
-import TextField from "@mui/material/TextField"
-import Autocomplete from "@mui/material/Autocomplete"
-import CircularProgress from "@mui/material/CircularProgress"
+import { useState } from 'react'
+import useApi from '../../../../hooks/useApi'
+import getMissing from '../../api/getMissing'
+import useToast from '../../../../hooks/useToast'
+import useHandleRequest from '../../../../hooks/useHandleRequest'
+import TextField from '@mui/material/TextField'
+import Autocomplete from '@mui/material/Autocomplete'
+import CircularProgress from '@mui/material/CircularProgress'
 
 function AutoCompleteInput({ onChange, select, loading }) {
   const [open, setOpen] = useState(false)
@@ -14,13 +14,15 @@ function AutoCompleteInput({ onChange, select, loading }) {
 
   useHandleRequest(response, setOptions)
 
+  console.log(options)
+
   useToast(response)
 
   const onOpen = () => {
     fetch(...getMissing())
 
     if (select !== null) {
-      setOptions([{ userCollectionId: 0, name: "Remover da posição" }])
+      setOptions([{ userCollectionId: 0, name: 'Remover da posição' }])
     }
 
     setOpen(true)
@@ -43,8 +45,11 @@ function AutoCompleteInput({ onChange, select, loading }) {
       onClose={onClose}
       isOptionEqualToValue={(option, value) => option.name === value.name}
       getOptionLabel={option => option.name}
-      options={options}
-      loading={response === "loading"}
+      options={options.sort((a, b) =>
+        b?.category?.toString().localeCompare(a?.category?.toString())
+      )}
+      groupBy={option => option.category}
+      loading={response === 'loading'}
       renderInput={params => (
         <TextField
           {...params}
@@ -53,7 +58,7 @@ function AutoCompleteInput({ onChange, select, loading }) {
             ...params.InputProps,
             endAdornment: (
               <>
-                {response === "loading" ? (
+                {response === 'loading' ? (
                   <CircularProgress color="inherit" size={20} />
                 ) : null}
                 {params.InputProps.endAdornment}

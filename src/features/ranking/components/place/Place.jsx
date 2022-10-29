@@ -1,14 +1,14 @@
-import { useEffect, useState, useRef } from "react"
-import useApi from "../../../../hooks/useApi"
-import updateRanking from "../../api/updateRanking"
-import deleteRanking from "../../api/deleteRanking"
-import createRanking from "../../api/createRanking"
-import useHandleResponse from "../../hooks/useHandleResponse"
-import useToast from "../../../../hooks/useToast"
-import { Container, Img } from "./place"
-import AutoCompleteInput from "../autoCompleteInput/AutoCompleteInput"
-import ItemTemplate from "../../../../components/itemTemplate/ItemTemplate"
-import rank from "../../../../assets/images/rank.png"
+import { useEffect, useState, useRef } from 'react'
+import useApi from '../../../../hooks/useApi'
+import updateRanking from '../../api/updateRanking'
+import deleteRanking from '../../api/deleteRanking'
+import createRanking from '../../api/createRanking'
+import useHandleResponse from '../../hooks/useHandleResponse'
+import useToast from '../../../../hooks/useToast'
+import { Container, Img } from './place'
+import AutoCompleteInput from '../autoCompleteInput/AutoCompleteInput'
+import ItemTemplate from '../../../../components/itemTemplate/ItemTemplate'
+import rank from '../../../../assets/images/rank.png'
 
 function Place({ collection, modify = true }) {
   const [rankingId, setRankingId] = useState(null)
@@ -51,8 +51,7 @@ function Place({ collection, modify = true }) {
     } else {
       const data = {
         id: rankingId.id,
-        userCollectionId: value.userCollectionId,
-        position: collection.position
+        userCollectionId: value.userCollectionId
       }
 
       fetch(...updateRanking(data))

@@ -14,8 +14,6 @@ function AutoCompleteInput({ onChange, select, loading }) {
 
   useHandleRequest(response, setOptions)
 
-  console.log(options)
-
   useToast(response)
 
   const onOpen = () => {

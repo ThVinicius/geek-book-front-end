@@ -1,17 +1,17 @@
-import { useState } from "react"
-import useApi from "../../hooks/useApi"
-import useToast from "../../hooks/useToast"
-import updateLastSeen from "./api/updateLastSeen"
-import { Container, H6, Increment, Decrement } from "./lastSeenStyles"
-import InputIcon from "../inputIcon/Input"
-import CloseIcon from "@mui/icons-material/Close"
+import { useState } from 'react'
+import useApi from '../../hooks/useApi'
+import useToast from '../../hooks/useToast'
+import updateLastSeen from './api/updateLastSeen'
+import { Container, H6, Increment, Decrement } from './lastSeenStyles'
+import InputIcon from '../inputIcon/Input'
+import CloseIcon from '@mui/icons-material/Close'
 
 function LastSeen({
   lastSeen,
   setCollections,
   collectionId,
   control = true,
-  justify = "end",
+  justify = 'end',
   modify = true
 }) {
   const [input, setInput] = useState(false)
@@ -28,7 +28,7 @@ function LastSeen({
 
   const key = event => {
     switch (event.key) {
-      case "Enter":
+      case 'Enter':
         const lastSeen = Number(last)
 
         const data = { collectionId, lastSeen }
@@ -48,7 +48,7 @@ function LastSeen({
 
         return
 
-      case "Escape":
+      case 'Escape':
         handleCancel()
         return
 
@@ -58,7 +58,7 @@ function LastSeen({
   }
 
   const incrementLastSeen = value => {
-    setLast(prev => prev + value)
+    setLast(prev => Number(prev) + value)
 
     const lastSeen = Number(last) + value
 
@@ -82,7 +82,7 @@ function LastSeen({
   }
 
   const handleLast = target => {
-    if (target.validity.valid || target.value === "") setLast(target.value)
+    if (target.validity.valid || target.value === '') setLast(target.value)
   }
 
   return (

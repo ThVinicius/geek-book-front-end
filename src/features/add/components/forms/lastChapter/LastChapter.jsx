@@ -3,6 +3,7 @@ import { useGlobal } from '../../../../../context/globalContext'
 import Input from '../../../../../components/input/Input'
 import SelectInput from '../../../../../components/selectInput/SelectInput'
 import SubmitButton from '../../../../../components/loadingButton/Button'
+import visualizationOptions from '../../../../../utils/visualizationOptions'
 import { Container, BoxButtons, Back } from '../category/formStyles'
 import { InputBox, Help, HelpText } from './lastStyles'
 
@@ -53,7 +54,7 @@ export default function LastChapterForm({
       <InputBox>
         <SelectInput
           label="Visualização"
-          options={vizualizationOptions()}
+          options={visualizationOptions()}
           none={false}
           value={publicValue}
           onChange={e => setPublicValue(e.target.value)}
@@ -68,13 +69,6 @@ export default function LastChapterForm({
       </BoxButtons>
     </Container>
   )
-}
-
-function vizualizationOptions() {
-  return [
-    { id: true, name: 'Público' },
-    { id: false, name: 'Privado' }
-  ]
 }
 
 function helpTextVisualization() {

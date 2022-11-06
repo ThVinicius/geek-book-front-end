@@ -18,8 +18,10 @@ const Container = styled.div`
 
 const H1 = styled.h1`
   width: 310px;
+  padding-bottom: 10px;
   font: normal 700 23px 'Lexend', sans-serif;
   color: #000000;
+  text-align: center;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;

@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
 const Container = styled.form`
   width: 100%;
@@ -15,7 +15,7 @@ const Container = styled.form`
 
 const Back = styled.div`
   padding: 10px;
-  font: normal 400 24px "Roboto", sans-serif;
+  font: normal 400 24px 'Roboto', sans-serif;
   text-decoration: underline;
   cursor: pointer;
 `

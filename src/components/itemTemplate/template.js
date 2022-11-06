@@ -1,7 +1,7 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
 const Container = styled.div`
-  padding: 20px;
+  padding: 10px;
   border-radius: 5px;
   background-color: #ffffff;
   box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.75);
@@ -10,16 +10,18 @@ const Container = styled.div`
   align-items: center;
 
   img {
-    width: 150px;
-    height: 220px;
+    width: 190px;
+    height: 290px;
     border-radius: 4px;
   }
 `
 
 const H1 = styled.h1`
   width: 310px;
-  font: normal 700 23px "Lexend", sans-serif;
+  padding-bottom: 10px;
+  font: normal 700 23px 'Lexend', sans-serif;
   color: #000000;
+  text-align: center;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -36,7 +38,7 @@ const Info = styled.div`
   gap: 9px;
 
   p {
-    font: normal 500 18px "Lexend", sans-serif;
+    font: normal 500 18px 'Lexend', sans-serif;
   }
 
   h6 {
@@ -48,7 +50,7 @@ const Info = styled.div`
     justify-content: center;
     border-radius: 5px;
     padding: 5px;
-    font: normal 400 19px "Lexend", sans-serif;
+    font: normal 400 19px 'Lexend', sans-serif;
   }
 `
 

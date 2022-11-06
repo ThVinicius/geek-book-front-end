@@ -1,15 +1,16 @@
-import { useState } from "react"
-import { StyledTableCell, StyledTableRow } from "../../assets/tableStyles"
-import Tooltip from "@mui/material/Tooltip"
-import Zoom from "@mui/material/Zoom"
-import Button from "@mui/material/Button"
-import TooltipContent from "../tooltipContent/TooltipContent"
-import DeleteIcon from "@mui/icons-material/Delete"
-import IconButton from "@mui/material/IconButton"
-import LastSeen from "../../../../components/lastSeen/LastSeen"
-import DeleteModal from "../../../../components/deleteModal/DeleteModal"
-import Status from "../../../../components/status/Status"
-import { H6 } from "./rowStyle"
+import { useState } from 'react'
+import { StyledTableCell, StyledTableRow } from '../../assets/tableStyles'
+import Tooltip from '@mui/material/Tooltip'
+import Zoom from '@mui/material/Zoom'
+import Button from '@mui/material/Button'
+import TooltipContent from '../tooltipContent/TooltipContent'
+import DeleteIcon from '@mui/icons-material/Delete'
+import IconButton from '@mui/material/IconButton'
+import LastSeen from '../../../../components/lastSeen/LastSeen'
+import DeleteModal from '../../../../components/deleteModal/DeleteModal'
+import Status from '../../../../components/status/Status'
+import Visualization from '../../../../components/visualization/Visualization'
+import { H6 } from './rowStyle'
 
 export default function Row({ row, setCollections }) {
   const [open, setOpen] = useState(false)
@@ -37,6 +38,9 @@ export default function Row({ row, setCollections }) {
         <StyledTableCell align="center">
           <Status row={row} />
         </StyledTableCell>
+        <StyledTableCell align="center">
+          <Visualization row={row} setCollections={setCollections} />
+        </StyledTableCell>
         <StyledTableCell align="right">
           <LastSeen
             lastSeen={row.lastSeen}
@@ -45,7 +49,7 @@ export default function Row({ row, setCollections }) {
           />
         </StyledTableCell>
         <StyledTableCell align="right">
-          <Tooltip title={<p style={{ fontSize: "16px" }}>Deletar</p>}>
+          <Tooltip title={<p style={{ fontSize: '16px' }}>Deletar</p>}>
             <IconButton onClick={() => setOpen(true)}>
               <DeleteIcon />
             </IconButton>

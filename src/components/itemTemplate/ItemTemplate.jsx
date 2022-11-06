@@ -1,11 +1,12 @@
-import { useState } from "react"
-import DeleteIcon from "@mui/icons-material/Delete"
-import IconButton from "@mui/material/IconButton"
-import Tooltip from "@mui/material/Tooltip"
-import DeleteModal from "../deleteModal/DeleteModal"
-import Status from "../status/Status"
-import LastSeen from "../lastSeen/LastSeen"
-import { Container, Box, Content, Info, DeleteBox, H1 } from "./template"
+import { useState } from 'react'
+import DeleteIcon from '@mui/icons-material/Delete'
+import IconButton from '@mui/material/IconButton'
+import Tooltip from '@mui/material/Tooltip'
+import DeleteModal from '../deleteModal/DeleteModal'
+import Status from '../status/Status'
+import Visualization from '../visualization/Visualization'
+import LastSeen from '../lastSeen/LastSeen'
+import { Container, Box, Content, Info, DeleteBox, H1 } from './template'
 
 function ItemTemplate({ row, setCollections, modify = true, control = false }) {
   const [open, setOpen] = useState(false)
@@ -14,7 +15,7 @@ function ItemTemplate({ row, setCollections, modify = true, control = false }) {
     <Container>
       <Tooltip
         title={
-          <h2 style={{ fontSize: "18px" }}>
+          <h2 style={{ fontSize: '18px' }}>
             {row.name || row.collection.name}
           </h2>
         }
@@ -35,6 +36,14 @@ function ItemTemplate({ row, setCollections, modify = true, control = false }) {
             <Status row={row} modify={modify} />
           </Info>
           <Info>
+            <p>Visualização</p>
+            <Visualization
+              row={row}
+              modify={modify}
+              setCollections={setCollections}
+            />
+          </Info>
+          <Info>
             <p>Capítulo/episódio</p>
             <LastSeen
               control={control}
@@ -47,7 +56,7 @@ function ItemTemplate({ row, setCollections, modify = true, control = false }) {
           </Info>
           {modify && (
             <DeleteBox>
-              <Tooltip title={<p style={{ fontSize: "16px" }}>Deletar</p>}>
+              <Tooltip title={<p style={{ fontSize: '16px' }}>Deletar</p>}>
                 <IconButton onClick={() => setOpen(true)}>
                   <DeleteIcon />
                 </IconButton>

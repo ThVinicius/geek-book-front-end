@@ -1,17 +1,17 @@
-import { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
-import { useGlobal } from "../../context/globalContext"
-import useWindowResize from "../../hooks/useWindowResize"
-import useLogout from "../../hooks/useLogout"
-import Drawer from "@mui/material/Drawer"
-import Avatar from "@mui/material/Avatar"
-import LogoMenu from "../logoMenu/LogoMenu"
-import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd"
-import LibraryAddCheckIcon from "@mui/icons-material/LibraryAddCheck"
-import ShareIcon from "@mui/icons-material/Share"
-import EmojiEventsIcon from "@mui/icons-material/EmojiEvents"
-import ShareDialog from "../shareDialog/ShareDialog"
-import { Container, Header, List, Footer, Logout, Content } from "./drawerStyle"
+import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { useGlobal } from '../../context/globalContext'
+import useWindowResize from '../../hooks/useWindowResize'
+import useLogout from '../../hooks/useLogout'
+import Drawer from '@mui/material/Drawer'
+import Avatar from '@mui/material/Avatar'
+import LogoMenu from '../logoMenu/LogoMenu'
+import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd'
+import LibraryAddCheckIcon from '@mui/icons-material/LibraryAddCheck'
+import ShareIcon from '@mui/icons-material/Share'
+import EmojiEventsIcon from '@mui/icons-material/EmojiEvents'
+import ShareDialog from '../shareDialog/ShareDialog'
+import { Container, Header, List, Footer, Logout, Content } from './drawerStyle'
 
 export default function TemporaryDrawer({ open, setOpen }) {
   const windowSize = useWindowResize()
@@ -20,7 +20,7 @@ export default function TemporaryDrawer({ open, setOpen }) {
   const { global, setGlobal } = useGlobal()
 
   useEffect(() => {
-    const userStringfy = localStorage.getItem("user")
+    const userStringfy = localStorage.getItem('user')
 
     if (global.user === null && userStringfy !== null) {
       const { token, ...user } = JSON.parse(userStringfy)
@@ -39,7 +39,7 @@ export default function TemporaryDrawer({ open, setOpen }) {
           <Content>
             <List>
               <BookmarkAddIcon />
-              <Link to="/home">Ativos</Link>
+              <Link to="/active">Ativos</Link>
             </List>
             <List>
               <LibraryAddCheckIcon />

@@ -10,11 +10,37 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 15px;
+
+  @media (max-width: 420px) {
+    padding: 0px;
+  }
+`
+
+const H1 = styled.h1`
+  font: normal 500 30px 'Lexend', sans-serif;
+  color: #000000;
+
+  @media (max-width: 420px) {
+    padding-left: 15px;
+  }
+`
+
+const Box = styled.div`
+  width: 100%;
+
+  @media (max-width: 420px) {
+    padding: 0px 15px;
+  }
 `
 
 const Img = styled.img`
   width: 376.917px;
   height: 289px;
+
+  @media (max-width: 420px) {
+    width: 336.917px;
+    height: 346px;
+  }
 `
 
-export { Container, Img }
+export { Container, Img, H1, Box }

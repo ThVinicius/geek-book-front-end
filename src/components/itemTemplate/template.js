@@ -14,6 +14,13 @@ const Container = styled.div`
     height: 290px;
     border-radius: 4px;
   }
+
+  @media (max-width: 420px) {
+    img {
+      width: 150px;
+      height: 250px;
+    }
+  }
 `
 
 const H1 = styled.h1`

@@ -5,7 +5,7 @@ import deleteRanking from '../../api/deleteRanking'
 import createRanking from '../../api/createRanking'
 import useHandleResponse from '../../hooks/useHandleResponse'
 import useToast from '../../../../hooks/useToast'
-import { Container, Img } from './place'
+import { Container, Img, H1, Box } from './place'
 import AutoCompleteInput from '../autoCompleteInput/AutoCompleteInput'
 import ItemTemplate from '../../../../components/itemTemplate/ItemTemplate'
 import rank from '../../../../assets/images/rank.png'
@@ -62,13 +62,15 @@ function Place({ collection, modify = true }) {
 
   return (
     <Container>
-      <h1>{collection.position}º Lugar</h1>
+      <H1>{collection.position}º Lugar</H1>
       {modify && (
-        <AutoCompleteInput
-          onChange={handleOnChange}
-          select={select}
-          loading={loading.current}
-        />
+        <Box>
+          <AutoCompleteInput
+            onChange={handleOnChange}
+            select={select}
+            loading={loading.current}
+          />
+        </Box>
       )}
       {select ? (
         <ItemTemplate row={select} modify={false} />

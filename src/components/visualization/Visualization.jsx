@@ -18,8 +18,6 @@ function Visualization({ row, modify = true, setCollections }) {
   const key = event => {
     switch (event.key) {
       case 'Escape':
-        setPublicValue(row.public)
-
         setInput(false)
         return
 

@@ -33,7 +33,7 @@ function ItemTemplate({ row, setCollections, modify = true, control = false }) {
           </Info>
           <Info>
             <p>Status</p>
-            <Status row={row} modify={modify} />
+            <Status row={row} modify={modify} setCollections={setCollections} />
           </Info>
           <Info>
             <p>Visualização</p>

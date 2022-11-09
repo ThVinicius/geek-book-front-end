@@ -36,7 +36,7 @@ export default function Row({ row, setCollections }) {
           <H6>{row.collection.category.name}</H6>
         </StyledTableCell>
         <StyledTableCell align="center">
-          <Status row={row} />
+          <Status row={row} setCollections={setCollections} />
         </StyledTableCell>
         <StyledTableCell align="center">
           <Visualization row={row} setCollections={setCollections} />

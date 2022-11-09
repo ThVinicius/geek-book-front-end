@@ -1,30 +1,24 @@
-import { useRef, useState } from "react"
-import useApi from "../../hooks/useApi"
-import updateStatus from "./api/updateStatus"
-import useToast from "../../hooks/useToast"
-import { useGlobal } from "../../context/globalContext"
-import SelectInput from "../selectInput/SelectInput"
-import { Container, H6 } from "./statusStyles"
+import { useState } from 'react'
+import useApi from '../../hooks/useApi'
+import updateStatus from './api/updateStatus'
+import useToast from '../../hooks/useToast'
+import { useGlobal } from '../../context/globalContext'
+import SelectInput from '../selectInput/SelectInput'
+import { Container, H6 } from './statusStyles'
 
 const wait = false
 
-export default function Status({ row, modify = true }) {
-  const statusValue = useRef({
-    id: row.status.id,
-    name: row.status.name || row.status
-  })
+export default function Status({ row, modify = true, setCollections }) {
   const { global } = useGlobal()
   const [input, setInput] = useState(false)
   const [response, fetch] = useApi(wait)
-  const [status, setStatus] = useState(statusValue.current)
+  const [status, setStatus] = useState(row.status)
 
   useToast(response)
 
   const key = event => {
     switch (event.key) {
-      case "Escape":
-        setStatus(statusValue.current)
-
+      case 'Escape':
         setInput(false)
         return
 
@@ -34,15 +28,21 @@ export default function Status({ row, modify = true }) {
   }
 
   const handleStatus = value => {
-    const newStatus = global.status.find(item => item.id === value)
+    const { id, name } = global.status.find(item => item.id === value)
 
-    setStatus(newStatus)
+    setStatus({ id, name })
 
-    const data = { id: row.id, statusId: newStatus.id }
+    setCollections(prev =>
+      prev.map(item => {
+        if (item.id === row.id) return { ...item, status: { id, name } }
+
+        return item
+      })
+    )
+
+    const data = { id: row.id, statusId: id }
 
     fetch(...updateStatus(data))
-
-    statusValue.current = newStatus
   }
 
   const handleInput = () => {
@@ -70,9 +70,7 @@ export default function Status({ row, modify = true }) {
         />
       ) : (
         <H6 onClick={handleInput}>
-          {typeof row.status === "string"
-            ? row.status
-            : statusValue.current.name}
+          {typeof row.status === 'string' ? row.status : status.name}
         </H6>
       )}
     </Container>

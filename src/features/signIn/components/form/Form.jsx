@@ -1,15 +1,16 @@
-import { useState } from "react"
-import useApi from "../../../../hooks/useApi"
-import request from "../../api/request"
-import useToast from "../../../../hooks/useToast"
-import InputPassword from "../../../../components/inputPassword/Input"
-import Input from "../../../../components/input/Input"
-import SubmitButton from "../../../../components/loadingButton/Button"
-import { Container, Anchor } from "./formStyles"
+import { useState } from 'react'
+import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn'
+import useApi from '../../../../hooks/useApi'
+import request from '../../api/request'
+import useToast from '../../../../hooks/useToast'
+import InputPassword from '../../../../components/inputPassword/Input'
+import Input from '../../../../components/input/Input'
+import SubmitButton from '../../../../components/loadingButton/Button'
+import { Container, Anchor, ButtonsBox, Back } from './formStyles'
 
-export default function Form() {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+export default function Form({ setSelected }) {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   const [response, fetch] = useApi()
 
   useToast(response)
@@ -38,11 +39,17 @@ export default function Form() {
         value={password}
         onChange={e => setPassword(e.target.value)}
       />
-      <SubmitButton
-        dataCy="submit"
-        name="Logar"
-        loading={response === "loading"}
-      />
+      <ButtonsBox>
+        <Back onClick={() => setSelected(null)}>
+          <KeyboardReturnIcon />
+          VOLTAR
+        </Back>
+        <SubmitButton
+          dataCy="submit"
+          name="Logar"
+          loading={response === 'loading'}
+        />
+      </ButtonsBox>
       <Anchor data-cy="signUp link" to="/signup">
         Não possuo cadastro
       </Anchor>

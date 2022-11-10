@@ -1,10 +1,12 @@
-import { useGlobal } from "../context/globalContext"
+import { useNavigate } from 'react-router-dom'
+import { useGlobal } from '../context/globalContext'
 
 export default function usePersistence() {
   const { global } = useGlobal()
+  const navigate = useNavigate()
 
-  function loginPersistence() {
-    const stringfyUser = localStorage.getItem("user")
+  function loginPersistence(nav) {
+    const stringfyUser = localStorage.getItem('user')
 
     if (global.token === null && stringfyUser !== null) {
       const { token, ...user } = JSON.parse(stringfyUser)
@@ -12,6 +14,8 @@ export default function usePersistence() {
       global.token = token
 
       global.user = user
+
+      if (nav !== undefined) navigate(nav)
     }
   }
 

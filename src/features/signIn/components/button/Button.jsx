@@ -1,8 +1,8 @@
 import { Container } from './buttonStyles'
 
-export default function Button({ icon, description, name, setSelected }) {
+export default function Button({ icon, description, func, params }) {
   return (
-    <Container onClick={() => setSelected(name)}>
+    <Container onClick={() => func(params)}>
       <div>{icon}</div>
       <span>{description}</span>
     </Container>

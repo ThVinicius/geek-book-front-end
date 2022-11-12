@@ -12,5 +12,5 @@ export default function gitHubAuthorize() {
   const queryStrings = qs.stringify(params)
   const authorizationUrl = `${GITHUB_AUTH_URL}?${queryStrings}`
 
-  window.open(authorizationUrl, 'noopener,noreferrer')
+  window.location.href = authorizationUrl
 }

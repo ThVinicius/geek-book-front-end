@@ -10,16 +10,18 @@ function useApi(wait = true) {
   const loading = useRef(false)
   const navigate = useNavigate()
 
-  function fetch(requests, submitToken, sucess, fail, props) {
+  function fetch(requests, submitToken, sucess, fail, tokenName = 'user') {
     if (loading.current === true && wait === true) return
 
     setResponse('loading')
 
     loading.current = true
 
+    const getToken = tokenName === 'user' ? global.token : global.oAuthToken
+
     const headers = submitToken
       ? {
-          Authorization: `Bearer ${global.token}`
+          Authorization: `Bearer ${getToken}`
         }
       : null
 
@@ -35,11 +37,11 @@ function useApi(wait = true) {
 
     Promise.all(promises)
       .then(res => {
-        sucess({ res, setResponse, global, setGlobal, navigate, ...props })
+        sucess({ res, setResponse, global, setGlobal, navigate })
       })
       .catch(res =>
         fail !== null
-          ? fail({ res: res.response, setResponse, navigate, ...props })
+          ? fail({ res: res.response, global, setResponse, navigate })
           : setResponse(res.response.data)
       )
       .finally(() => {

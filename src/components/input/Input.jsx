@@ -1,9 +1,9 @@
-import { Container } from "./inputStyles"
+import { Container } from './inputStyles'
 
 export default function Input(props) {
-  const { label, type = "text", value, onChange, required = true } = props
+  const { label, type = 'text', value, onChange, required = true } = props
 
-  const { multiline = false, disabled = false, width = "75%" } = props
+  const { multiline = false, disabled = false, width = '75%' } = props
 
   const { dataCy, size = null, number = false } = props
 
@@ -20,7 +20,9 @@ export default function Input(props) {
       multiline={multiline}
       width={width}
       inputProps={
-        number && { inputmode: "numeric", pattern: "[0-9]*[.]?[0-9]*" }
+        number
+          ? { inputmode: 'numeric', pattern: '[0-9]*[.]?[0-9]*' }
+          : undefined
       }
     />
   )

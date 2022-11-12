@@ -1,11 +1,13 @@
-export default function postOath(data) {
-  const submitToken = false
+export default function signUpOath(data) {
+  const submitToken = true
 
-  const request = { url: '/signin/github', method: 'post', data }
+  const tokenName = 'oAuth'
+
+  const request = { url: '/signup/oauth', method: 'post', data }
 
   const requests = [request]
 
-  return [requests, submitToken, sucessCase, failCase]
+  return [requests, submitToken, sucessCase, failCase, tokenName]
 }
 
 function sucessCase(props) {
@@ -39,26 +41,29 @@ function failCase(props) {
     case 'Bad Request':
       message = res.data.reduce((acc, cur) => `${acc}\n` + cur, '')
 
-      nav = '/'
-
       break
 
     case 'Unauthorized':
-      message = 'Ocorreu um erro durante sua autenticação, tente novamente'
+    case 'Upgrade Required':
+      message =
+        'Ocorreu um um erro durante sua autenticação\nTente fazer o login novamente'
 
-      nav = '/'
+      break
+
+    case 'Token expired/invalid':
+      message = 'Sua sessão expirou\nFaça o login novamente'
 
       break
 
     case 'Conflict':
+      message = 'Esse nickname já esta em uso!\ntente outro'
+
       global.oAuthToken = res.data.token
 
-      return setResponse('nicknameConflit')
+      break
 
     default:
       message = 'Ocorreu um erro inesperado!\nTente mais tarde'
-
-      nav = '/'
       break
   }
 

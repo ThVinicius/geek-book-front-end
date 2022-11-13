@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Container = styled.form`
   width: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,6 +12,14 @@ const Container = styled.form`
   h1 {
     font: normal 500 24px 'Poppins', sans-serif;
     color: rgba(0, 0, 0, 0.8);
+  }
+
+  @media (max-height: 420px) {
+    gap: 5px;
+
+    h1 {
+      font: normal 500 18px 'Poppins', sans-serif;
+    }
   }
 `
 

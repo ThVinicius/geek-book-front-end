@@ -33,21 +33,37 @@ GeekBook é um gerenciamento de mangás, animes, séries e novels.
 
 ## Rotas
 
-### /home
+### /
+
+Essa rota é onde se faz o login do app.
+
+É possivel fazer o login através:
+
+- Do github.
+- De um email cadastrado no app.
+
+<h1 align="center" >
+<img alt="gif" src="./readme/loginGithub.gif">
+</h1>
+
+#
+
+### /active
 
 Essa rota lista suas obras cadastradas ativas.
 
 Nela é possivel:
 
 - Visualizar o pôster e a sinopse da obra.
-- Visualizar e mudar o status da obra
-- Visualizar e mudar o ultímo capítulo/episódio visto
+- Visualizar e mudar o status da obra (ativo ou completo).
+- Visualizar e mudar a visualização da obra (público ou privado).
+- Visualizar e mudar o ultímo capítulo/episódio visto.
   - Ao clicar no último capítulo/episodio da obra aparecera um input, para salvar o valor deve-se apertar o enter, Esc ou clicar no X o input some.
-- Deletar a obra de sua coleção
-- Filtrar sua lista pelo nome
+- Deletar a obra de sua coleção.
+- Filtrar sua lista pelo nome.
 
 <h1 align="center" >
-<img alt="gif" src="./readme/home.gif">
+<img alt="gif" src="./readme/active.gif">
 </h1>
 
 #
@@ -59,7 +75,8 @@ Essa rota lista suas obras cadastradas completas.
 Nela é possivel:
 
 - Visualizar o pôster da obra.
-- Visualizar e mudar o status da obra
+- Visualizar e mudar o status da obra (ativo ou completo).
+- Visualizar e mudar a visualização da obra (público ou privado).
 - Visualizar e mudar o ultímo capítulo/episódio visto
   - Ao clicar no último capítulo/episodio da obra aparecera um input, para salvar o valor deve-se apertar o enter, Esc ou clicar no X o input some.
 - Deletar a obra de sua coleção
@@ -81,7 +98,9 @@ Nessa rota é possivel cadastrar uma obra em sua coleção.
 - Descrição (opcional)
   - Preencha a sinopse e o link do pôster
 - Informações adicionais
-  - Preencha o último capítulo/episodio visto e o status dela
+  - Preencha o último capítulo/episodio visto e o status dela.
+  - Escolha qual é o status da obra (ativo ou completo)
+  - Escolha qual é a visualização da obra (público ou privado)
 
 <h1 align="center" >
 <img alt="gif" src="./readme/add.gif">
@@ -126,6 +145,19 @@ To run this project, you will need to add the following environment variables to
 - endereço HTTP do frontEnd, sem a barra final.
 
 - Ex: http://127.0.0.1:5173
+
+`VITE_CLIENT_ID`
+
+- O client Id do Github OAuth
+
+`VITE_REDIRECT_URL`
+
+- A url callback do Github OAuth
+
+- O path deve ser `/oauth/github/`
+  - Ex: http://localhost:5173/oauth/github/
+
+[Github OAuth Docs](https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app)
 
 #
 

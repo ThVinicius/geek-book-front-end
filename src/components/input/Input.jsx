@@ -5,7 +5,7 @@ export default function Input(props) {
 
   const { multiline = false, disabled = false, width = '75%' } = props
 
-  const { dataCy, size = null, number = false } = props
+  const { dataCy, size = 'medium', number = false } = props
 
   return (
     <Container

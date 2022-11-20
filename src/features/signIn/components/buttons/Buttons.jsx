@@ -9,17 +9,20 @@ export default function Buttons({ setSelected }) {
     <Container>
       <Title>Login</Title>
       {buttons(setSelected).map(
-        ({ icon, description, func, params }, index) => (
+        ({ icon, description, func, params, dataCy }, index) => (
           <Button
             icon={icon}
             description={description}
             func={func}
             params={params}
+            dataCy={dataCy}
             key={index}
           />
         )
       )}
-      <Anchor to="/signup">Não possuo cadastro</Anchor>
+      <Anchor to="/signup" data-cy="signUp link">
+        Não possuo cadastro
+      </Anchor>
     </Container>
   )
 }
@@ -28,12 +31,14 @@ const buttons = setSelected => [
   {
     icon: <GitHubIcon />,
     description: 'Logar com GitHub',
-    func: gitHubAuthorize
+    func: gitHubAuthorize,
+    dataCy: 'GITHUB'
   },
   {
     icon: <EmailIcon />,
     description: 'Logar com Email',
     func: setSelected,
-    params: 'email'
+    params: 'email',
+    dataCy: 'EMAIL'
   }
 ]

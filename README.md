@@ -187,6 +187,16 @@ Start the server
   npm start
 ```
 
+#
+
+## Rodar os testes
+
+1 - Vá para o diretório do back-end do projeto e execute o comando `npm run dev:test`
+
+2 - Vá para o diretório do front-end do projeto e execute o comando `npm start`
+
+3 - No diretório do front-end execute o comando `npx cypress open`
+
 </br>
 
 ## Acknowledgements

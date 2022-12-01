@@ -42,6 +42,7 @@ function AutoCompleteInput({ onChange, value, select, loading }) {
       onOpen={onOpen}
       onClose={onClose}
       value={value}
+      blurOnSelect={true}
       isOptionEqualToValue={(option, value) => option.name === value.name}
       getOptionLabel={option => option.name}
       options={options.sort((a, b) =>

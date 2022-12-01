@@ -7,7 +7,7 @@ import TextField from '@mui/material/TextField'
 import Autocomplete from '@mui/material/Autocomplete'
 import CircularProgress from '@mui/material/CircularProgress'
 
-function AutoCompleteInput({ onChange, select, loading }) {
+function AutoCompleteInput({ onChange, value, select, loading }) {
   const [open, setOpen] = useState(false)
   const [options, setOptions] = useState([])
   const [response, fetch] = useApi()
@@ -17,11 +17,11 @@ function AutoCompleteInput({ onChange, select, loading }) {
   useToast(response)
 
   const onOpen = () => {
-    fetch(...getMissing())
-
     if (select !== null) {
       setOptions([{ userCollectionId: 0, name: 'Remover da posição' }])
     }
+
+    fetch(...getMissing())
 
     setOpen(true)
   }
@@ -41,6 +41,7 @@ function AutoCompleteInput({ onChange, select, loading }) {
       open={open}
       onOpen={onOpen}
       onClose={onClose}
+      value={value}
       isOptionEqualToValue={(option, value) => option.name === value.name}
       getOptionLabel={option => option.name}
       options={options.sort((a, b) =>

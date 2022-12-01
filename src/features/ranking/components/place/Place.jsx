@@ -66,6 +66,7 @@ function Place({ collection, modify = true }) {
       {modify && (
         <Box>
           <AutoCompleteInput
+            value={select}
             onChange={handleOnChange}
             select={select}
             loading={loading.current}

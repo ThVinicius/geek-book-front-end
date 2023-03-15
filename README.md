@@ -163,6 +163,9 @@ To run this project, you will need to add the following environment variables to
 
 ## Run Locally
 
+NodeJS version
+16.15.0
+
 Clone the project
 
 ```bash
